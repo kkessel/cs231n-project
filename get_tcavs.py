@@ -18,7 +18,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
                model_fn,
                ckpt_path,
                image_shape,
-               bottleneck_scope):
+               bottleneck_scopes):
     super(MNISTModelWrapper, self).__init__(image_shape)
     self.sess = sess
     # Create the model and restore the weights
@@ -56,7 +56,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     # TODO: set all these things in here
     # A dictionary of bottleneck tensors.
     self.bottlenecks_tensors = MNISTModelWrapper.get_bottleneck_tensors(
-        bottleneck_scope)
+        bottleneck_scopes)
     if DEBUG:
       print("="*80)
       print("Bottleneck tensors")
@@ -89,25 +89,29 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     return str(idx)
 
   @staticmethod
-  def get_bottleneck_tensors(scope):
+  def get_bottleneck_tensors(scopes):
     """Add bottlenecks and their pre-Relu versions to bn_endpoints dict."""
     graph = tf.get_default_graph()
     bn_endpoints = {}
     for op in graph.get_operations():
-      if op.name.startswith(scope+'/') and \
-         ('Add' in op.type or 'Relu' in op.type) :
-        name = op.name.split('/')[1]
-        bn_endpoints[name] = op.outputs[0]
+      for scope in scopes:
+        if op.name.startswith(scope+'/') and \
+           ('Add' in op.type or 'Relu' in op.type) :
+          #name = op.name.split('/')[1]
+          name = "_".join(op.name.split('/'))
+          bn_endpoints[name] = op.outputs[0]
     return bn_endpoints
 
 def main():
+  tf.reset_default_graph()
+
   with tf.Session() as sess:
     ckpt_path = 'models/mnist5.ckpt'
     model = MNISTModelWrapper(sess,
                               models.model_fn,
                               ckpt_path,
                               [28, 28, 3],
-                              bottleneck_scope='fc1')
+                              bottleneck_scopes=['fc1', 'fc5'])
 
     if DEBUG:
       print(model)
@@ -126,7 +130,7 @@ def main():
     cav_dir = working_dir + '/cavs/'
     # where the images live.
     source_dir = "data/"
-    bottlenecks = ['Add', "Relu"]  # @param
+    bottlenecks = ["fc1_Relu", "fc5_Relu"]  # @param
 
     utils.make_dir_if_not_exists(activation_dir)
     utils.make_dir_if_not_exists(working_dir)

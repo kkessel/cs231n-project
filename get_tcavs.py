@@ -3,6 +3,9 @@ sys.path.append('./tcav/')
 import tensorflow as tf
 import numpy as np
 from tcav import model as tcav_models
+from tcav import activation_generator as act_gen
+from tcav import utils, utils_plot
+from tcav import tcav
 import models
 
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
@@ -68,7 +71,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     # usually defined under the graph. For example:
     # with g.as_default():
     #   self.tf.placeholder(tf.int64, shape=[None])
-    self.y_input = tf.placeholder(tf.int64, shape=[None])
+    self.y_input = y_
     # The tensor representing the loss (used to calculate derivative).
     self.loss = cross_entropy
 
@@ -77,6 +80,8 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
 
   def label_to_id(self, label):
     """Convert label (string) to index in the logit layer (id)."""
+    if label == 'zebra':
+      label = '2'
     return int(label)
 
   def id_to_label(self, idx):
@@ -98,7 +103,11 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
 if __name__ == '__main__':
   with tf.Session() as sess:
     ckpt_path = 'models/mnist5.ckpt'
-    model = MNISTModelWrapper(sess, models.model_fn, ckpt_path, 28, 'fc1')
+    model = MNISTModelWrapper(sess,
+                              models.model_fn,
+                              ckpt_path,
+                              [28, 28, 3],
+                              bottleneck_scope='fc1')
 
     if DEBUG:
       print(model)
@@ -108,22 +117,44 @@ if __name__ == '__main__':
     user = 'beenkim'
     # the name of the parent directory that results are stored (only if you want to cache)
     project_name = 'tcav_class_test'
-    working_dir = "/tmp/" + user + '/' + project_name
+    #working_dir = "/tmp/" + user + '/' + project_name
+    working_dir = project_name
     # where activations are stored (only if your act_gen_wrapper does so)
     activation_dir =  working_dir+ '/activations/'
     # where CAVs are stored.
     # You can say None if you don't wish to store any.
     cav_dir = working_dir + '/cavs/'
     # where the images live.
-    source_dir = "/Users/beenkim/image_net_subsets/"
-    bottlenecks = [ 'mixed4d']  # @param
+    source_dir = "data/"
+    bottlenecks = ['Add', "Relu"]  # @param
 
-    # utils.make_dir_if_not_exists(activation_dir)
-    # utils.make_dir_if_not_exists(working_dir)
-    # utils.make_dir_if_not_exists(cav_dir)
+    utils.make_dir_if_not_exists(activation_dir)
+    utils.make_dir_if_not_exists(working_dir)
+    utils.make_dir_if_not_exists(cav_dir)
 
     # this is a regularizer penalty parameter for linear classifier to get CAVs.
     alphas = [0.1]
 
-    target = 'zebra'
-    concepts = ["dotted","striped","zigzagged"]
+    target = "zebra"
+    concepts = ["blue","green","red","cyan","magenta","yellow"]
+    random_concepts = ['not_blue1', 'not_blue']
+    act_generator = act_gen.ImageActivationGenerator(model,
+                                                     source_dir,
+                                                     activation_dir,
+                                                     max_examples=100)
+    # Run TCAV!
+    tf.logging.set_verbosity(0)
+
+    mytcav = tcav.TCAV(sess,
+                       target,
+                       concepts,
+                       bottlenecks,
+                       act_generator,
+                       alphas,
+                       cav_dir=cav_dir,
+                       random_concepts=random_concepts)
+
+    results = mytcav.run()
+    print(results)
+
+    utils_plot.plot_results(results, random_concepts=random_concepts)

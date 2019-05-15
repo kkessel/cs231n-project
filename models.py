@@ -22,8 +22,9 @@ def model_fn():
   with tf.variable_scope('in', reuse=True):
     W_fc = weight_variable([INPUT, HFC])
     b_fc = bias_variable([HFC])
-    x_in = tf.placeholder(tf.float32, [None, INPUT], name='input_op')
-    h_fc = tf.nn.relu(tf.add(tf.matmul(x_in, W_fc), b_fc))
+    x_in = tf.placeholder(tf.float32, [None, 28,28,3], name='input_op')
+    layer_in = tf.layers.Flatten(data_format='channels_last')(x_in)
+    h_fc = tf.nn.relu(tf.add(tf.matmul(layer_in, W_fc), b_fc))
 
   with tf.variable_scope('fc1', reuse=True):
     W_fc1 = weight_variable([HFC, HFC])

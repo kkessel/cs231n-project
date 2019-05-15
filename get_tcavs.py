@@ -5,6 +5,10 @@ import numpy as np
 from tcav import model as tcav_models
 import models
 
+from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
+
+DEBUG = True
+
 class MNISTModelWrapper(tcav_models.ImageModelWrapper):
   def __init__(self,
                sess,
@@ -17,15 +21,43 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     # Create the model and restore the weights
     x_in, y, cross_entropy, y_, b_fc4 = model_fn()
     self.sess.run(tf.global_variables_initializer())
-    print(self.sess.run(b_fc4))
+
+    if DEBUG:
+      print("Tensor values in checkpoint")
+      print_tensors_in_checkpoint_file(ckpt_path, all_tensors=True, tensor_name='')
+      tensor_names = [n.name for n in tf.get_default_graph().as_graph_def().node]
+      print("="*80)
+      print("Tensors in checkpoint")
+      for name in tensor_names:
+        print(name)
+      print("="*80)
+      print("Variables in graph:")
+      variables_names = [v.name for v in tf.trainable_variables()]
+      for v in variables_names:
+        print(v)
+      print("="*80)
+      print("Variables before loading checkpoint")
+      dgraph = tf.get_default_graph()
+      bias = dgraph.get_tensor_by_name("fc4/bias:0")
+      print(self.sess.run(bias))
+      saver = tf.train.Saver()
+      saver.restore(self.sess, ckpt_path)
+      print("="*80)
+      print("Variables after loading checkpoint")
+      graph = tf.get_default_graph()
+      bias = graph.get_tensor_by_name("fc4/bias:0")
+      print(self.sess.run(bias))
+
     saver = tf.train.Saver()
     saver.restore(self.sess, ckpt_path)
-    print(self.sess.run(b_fc4))
     # TODO: set all these things in here
     # A dictionary of bottleneck tensors.
     self.bottlenecks_tensors = MNISTModelWrapper.get_bottleneck_tensors(
         bottleneck_scope)
-    print(self.bottlenecks_tensors)
+    if DEBUG:
+      print("="*80)
+      print("Bottleneck tensors")
+      print(self.bottlenecks_tensors)
     # A dictionary of input, 'logit' and prediction tensors.
     self.ends = {'input': x_in,
                  'logit': y,
@@ -67,4 +99,31 @@ if __name__ == '__main__':
   with tf.Session() as sess:
     ckpt_path = 'models/mnist5.ckpt'
     model = MNISTModelWrapper(sess, models.model_fn, ckpt_path, 28, 'fc1')
-    print(model)
+
+    if DEBUG:
+      print(model)
+
+    # This is the name of your model wrapper (InceptionV3 and GoogleNet are provided in model.py)
+    model_to_run = 'MNIST Model 1'
+    user = 'beenkim'
+    # the name of the parent directory that results are stored (only if you want to cache)
+    project_name = 'tcav_class_test'
+    working_dir = "/tmp/" + user + '/' + project_name
+    # where activations are stored (only if your act_gen_wrapper does so)
+    activation_dir =  working_dir+ '/activations/'
+    # where CAVs are stored.
+    # You can say None if you don't wish to store any.
+    cav_dir = working_dir + '/cavs/'
+    # where the images live.
+    source_dir = "/Users/beenkim/image_net_subsets/"
+    bottlenecks = [ 'mixed4d']  # @param
+
+    # utils.make_dir_if_not_exists(activation_dir)
+    # utils.make_dir_if_not_exists(working_dir)
+    # utils.make_dir_if_not_exists(cav_dir)
+
+    # this is a regularizer penalty parameter for linear classifier to get CAVs.
+    alphas = [0.1]
+
+    target = 'zebra'
+    concepts = ["dotted","striped","zigzagged"]

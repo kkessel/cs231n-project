@@ -17,53 +17,41 @@ def model_fn():
   INPUT = 28*28*3
   OUTPUT = 10
   HFC = 50
-  # variables
-  with tf.variable_scope('in'):
+
+
+  with tf.variable_scope('in', reuse=True):
     W_fc = weight_variable([INPUT, HFC])
     b_fc = bias_variable([HFC])
+    x_in = tf.placeholder(tf.float32, [None, INPUT], name='input_op')
+    h_fc = tf.nn.relu(tf.add(tf.matmul(x_in, W_fc), b_fc))
 
-  with tf.variable_scope('fc1'):
+  with tf.variable_scope('fc1', reuse=True):
     W_fc1 = weight_variable([HFC, HFC])
     b_fc1 = bias_variable([HFC])
-
-  with tf.variable_scope('fc2'):
+    h_fc1 = tf.nn.relu(tf.add(tf.matmul(h_fc, W_fc1), b_fc1))
+  with tf.variable_scope('fc2', reuse=True):
     W_fc2 = weight_variable([HFC, HFC])
     b_fc2 = bias_variable([HFC])
-
-  with tf.variable_scope('fc3'):
+    h_fc2 = tf.nn.relu(tf.add(tf.matmul(h_fc1, W_fc2), b_fc2))
+  with tf.variable_scope('fc3', reuse=True):
     W_fc3 = weight_variable([HFC, HFC])
     b_fc3 = bias_variable([HFC])
-
-  with tf.variable_scope('fc4'):
+    h_fc3 = tf.nn.relu(tf.add(tf.matmul(h_fc2, W_fc3), b_fc3))
+  with tf.variable_scope('fc4', reuse=True):
     W_fc4 = weight_variable([HFC, HFC])
     b_fc4 = bias_variable([HFC])
-
-  with tf.variable_scope('fc5'):
+    h_fc4 = tf.nn.relu(tf.add(tf.matmul(h_fc3, W_fc4), b_fc4))
+  with tf.variable_scope('fc5', reuse=True):
     W_fc5 = weight_variable([HFC, HFC])
     b_fc5 = bias_variable([HFC])
-
-  with tf.variable_scope('out'):
-    W_o = weight_variable([HFC, OUTPUT])
-    b_o = bias_variable([OUTPUT])
-
-  # Compuational graph definition
-  x_in = tf.placeholder(tf.float32, [None, INPUT], name='input_op')
-
-  h_fc = tf.nn.relu(tf.add(tf.matmul(x_in, W_fc), b_fc))
-  with tf.name_scope('fc1'):
-    h_fc1 = tf.nn.relu(tf.add(tf.matmul(h_fc, W_fc1), b_fc1))
-  with tf.name_scope('fc2'):
-    h_fc2 = tf.nn.relu(tf.add(tf.matmul(h_fc1, W_fc2), b_fc2))
-  with tf.name_scope('fc3'):
-    h_fc3 = tf.nn.relu(tf.add(tf.matmul(h_fc2, W_fc3), b_fc3))
-  with tf.name_scope('fc4'):
-    h_fc4 = tf.nn.relu(tf.add(tf.matmul(h_fc3, W_fc4), b_fc4))
-  with tf.name_scope('fc5'):
     h_fc5 = tf.nn.relu(tf.add(tf.matmul(h_fc4, W_fc5), b_fc5))
 
-  y = tf.nn.relu(tf.add(tf.matmul(h_fc5, W_o), b_o, name="output_op"))
+  with tf.variable_scope('out', reuse=True):
+      W_o = weight_variable([HFC, OUTPUT])
+      b_o = bias_variable([OUTPUT])
+      y = tf.nn.relu(tf.add(tf.matmul(h_fc5, W_o), b_o, name="output_op"))
 
-  y_ = tf.placeholder(tf.int64, [None])
+  y_ = tf.placeholder(tf.int64, [None], name='labels')
   cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y)
 
   return x_in, y, cross_entropy, y_, b_fc

@@ -100,7 +100,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
         bn_endpoints[name] = op.outputs[0]
     return bn_endpoints
 
-if __name__ == '__main__':
+def main():
   with tf.Session() as sess:
     ckpt_path = 'models/mnist5.ckpt'
     model = MNISTModelWrapper(sess,
@@ -137,7 +137,7 @@ if __name__ == '__main__':
 
     target = "zebra"
     concepts = ["blue","green","red","cyan","magenta","yellow"]
-    random_concepts = ['not_blue1', 'not_blue']
+    random_concepts = ["not_blue", "not_red", "not_green", "not_cyan", "not_magenta", "not_yellow"]
     act_generator = act_gen.ImageActivationGenerator(model,
                                                      source_dir,
                                                      activation_dir,
@@ -158,3 +158,6 @@ if __name__ == '__main__':
     print(results)
 
     utils_plot.plot_results(results, random_concepts=random_concepts)
+
+if __name__ == '__main__':
+  main()

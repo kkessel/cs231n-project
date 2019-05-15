@@ -9,11 +9,18 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
   def __init__(self,
                sess,
                model_fn,
+               ckpt_path,
                image_shape,
                bottleneck_scope):
     super(MNISTModelWrapper, self).__init__(image_shape)
     self.sess = sess
-    x_in, y, cross_entropy, y_ = model_fn()
+    # Create the model and restore the weights
+    x_in, y, cross_entropy, y_, b_fc4 = model_fn()
+    self.sess.run(tf.global_variables_initializer())
+    print(self.sess.run(b_fc4))
+    saver = tf.train.Saver()
+    saver.restore(self.sess, ckpt_path)
+    print(self.sess.run(b_fc4))
     # TODO: set all these things in here
     # A dictionary of bottleneck tensors.
     self.bottlenecks_tensors = MNISTModelWrapper.get_bottleneck_tensors(
@@ -57,6 +64,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     return bn_endpoints
 
 if __name__ == '__main__':
-  #with tf.Session() as sess:
-  model = MNISTModelWrapper(None, models.model_fn, 28, 'fc1')
-  print(model)
+  with tf.Session() as sess:
+    ckpt_path = 'models/mnist5.ckpt'
+    model = MNISTModelWrapper(sess, models.model_fn, ckpt_path, 28, 'fc1')
+    print(model)

@@ -1,13 +1,13 @@
 import tensorflow as tf
 
 # Helper functions to define the model
-def weight_variable(shape):
+def weight_variable(shape, name='weight'):
     initial = tf.truncated_normal(shape, stddev=0.1)
-    return tf.Variable(initial)
+    return tf.Variable(initial, name=name)
 
-def bias_variable(shape):
+def bias_variable(shape, name='bias'):
     initial = tf.constant(0.1, shape=shape)
-    return tf.Variable(initial)
+    return tf.Variable(initial, name=name)
 
 # The actual model function.
 # TODO: parametrize this atrocity
@@ -18,26 +18,33 @@ def model_fn():
   OUTPUT = 10
   HFC = 50
   # variables
-  W_fc = weight_variable([INPUT, HFC])
-  b_fc = bias_variable([HFC])
+  with tf.variable_scope('in'):
+    W_fc = weight_variable([INPUT, HFC])
+    b_fc = bias_variable([HFC])
 
-  W_fc1 = weight_variable([HFC, HFC])
-  b_fc1 = bias_variable([HFC])
+  with tf.variable_scope('fc1'):
+    W_fc1 = weight_variable([HFC, HFC])
+    b_fc1 = bias_variable([HFC])
 
-  W_fc2 = weight_variable([HFC, HFC])
-  b_fc2 = bias_variable([HFC])
+  with tf.variable_scope('fc2'):
+    W_fc2 = weight_variable([HFC, HFC])
+    b_fc2 = bias_variable([HFC])
 
-  W_fc3 = weight_variable([HFC, HFC])
-  b_fc3 = bias_variable([HFC])
+  with tf.variable_scope('fc3'):
+    W_fc3 = weight_variable([HFC, HFC])
+    b_fc3 = bias_variable([HFC])
 
-  W_fc4 = weight_variable([HFC, HFC])
-  b_fc4 = bias_variable([HFC])
+  with tf.variable_scope('fc4'):
+    W_fc4 = weight_variable([HFC, HFC])
+    b_fc4 = bias_variable([HFC])
 
-  W_fc5 = weight_variable([HFC, HFC])
-  b_fc5 = bias_variable([HFC])
+  with tf.variable_scope('fc5'):
+    W_fc5 = weight_variable([HFC, HFC])
+    b_fc5 = bias_variable([HFC])
 
-  W_o = weight_variable([HFC, OUTPUT])
-  b_o = bias_variable([OUTPUT])
+  with tf.variable_scope('out'):
+    W_o = weight_variable([HFC, OUTPUT])
+    b_o = bias_variable([OUTPUT])
 
   # Compuational graph definition
   x_in = tf.placeholder(tf.float32, [None, INPUT], name='input_op')
@@ -59,4 +66,4 @@ def model_fn():
   y_ = tf.placeholder(tf.int64, [None])
   cross_entropy = tf.losses.sparse_softmax_cross_entropy(labels=y_, logits=y)
 
-  return x_in, y, cross_entropy, y_
+  return x_in, y, cross_entropy, y_, b_fc

@@ -80,7 +80,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
 
   def label_to_id(self, label):
     """Convert label (string) to index in the logit layer (id)."""
-    if label == 'zebra':
+    if 'zebra' in label:
       label = '2'
     return int(label)
 
@@ -102,11 +102,13 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
           bn_endpoints[name] = op.outputs[0]
     return bn_endpoints
 
-def main():
+def main(model_name='MNIST Model 1',
+         cav_dir='tcav_class_test',
+         ckpt_path='models/mnist5_blue2.ckpt',
+         target="zebra"):
   tf.reset_default_graph()
 
   with tf.Session() as sess:
-    ckpt_path = 'models/mnist5.ckpt'
     model = MNISTModelWrapper(sess,
                               models.model_fn,
                               ckpt_path,
@@ -117,10 +119,9 @@ def main():
       print(model)
 
     # This is the name of your model wrapper (InceptionV3 and GoogleNet are provided in model.py)
-    model_to_run = 'MNIST Model 1'
-    user = 'beenkim'
+    model_to_run = model_name
     # the name of the parent directory that results are stored (only if you want to cache)
-    project_name = 'tcav_class_test'
+    project_name = cav_dir
     #working_dir = "/tmp/" + user + '/' + project_name
     working_dir = project_name
     # where activations are stored (only if your act_gen_wrapper does so)
@@ -139,7 +140,7 @@ def main():
     # this is a regularizer penalty parameter for linear classifier to get CAVs.
     alphas = [0.1]
 
-    target = "zebra"
+    target = target
     concepts = ["blue","green","red","cyan","magenta","yellow"]
     random_concepts = ["not_blue", "not_red", "not_green", "not_cyan", "not_magenta", "not_yellow"]
     act_generator = act_gen.ImageActivationGenerator(model,

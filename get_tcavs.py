@@ -10,8 +10,14 @@ import models
 
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
 
-DEBUG = True
+# If you set this to True, we'll get suuuuuuper verbose output to debug stuff
+DEBUG = False
 
+'''MNISTModelWrapper Class
+TCAV requires us to subclass tcav_models.ImageModelWrapper.
+
+All the class variables set in the constructor need to be set for TCAV to run
+'''
 class MNISTModelWrapper(tcav_models.ImageModelWrapper):
   def __init__(self,
                sess,
@@ -25,6 +31,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     x_in, y, cross_entropy, y_, b_fc4 = model_fn()
     self.sess.run(tf.global_variables_initializer())
 
+    # Debug the weird loading behavior...
     if DEBUG:
       print("Tensor values in checkpoint")
       print_tensors_in_checkpoint_file(ckpt_path, all_tensors=True, tensor_name='')
@@ -51,21 +58,25 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
       bias = graph.get_tensor_by_name("fc4/bias:0")
       print(self.sess.run(bias))
 
+    # Restore the weights of the network
     saver = tf.train.Saver()
     saver.restore(self.sess, ckpt_path)
-    # TODO: set all these things in here
-    # A dictionary of bottleneck tensors.
+
+    # A dictionary of bottleneck tensors, i.e. the tensors that have the
+    # activations at the desired depths in the layer
+    # a.k.a. features in latent space
     self.bottlenecks_tensors = MNISTModelWrapper.get_bottleneck_tensors(
         bottleneck_scopes)
     if DEBUG:
       print("="*80)
       print("Bottleneck tensors")
       print(self.bottlenecks_tensors)
+
     # A dictionary of input, 'logit' and prediction tensors.
     self.ends = {'input': x_in,
                  'logit': y,
                  'prediction': tf.argmax(y, axis=1)}
-    # The model name string.
+    # The model name string. Not sure why we need this, but TCAV asked for it
     self.model_name = 'MNIST Model 1'
     # a place holder for index of the neuron/class of interest.
     # usually defined under the graph. For example:
@@ -102,6 +113,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
           bn_endpoints[name] = op.outputs[0]
     return bn_endpoints
 
+# This runs TCAV :)
 def main(model_name='MNIST Model 1',
          cav_dir='tcav_class_test',
          ckpt_path='models/mnist5_blue2.ckpt',
@@ -109,12 +121,13 @@ def main(model_name='MNIST Model 1',
   tf.reset_default_graph()
 
   with tf.Session() as sess:
-    model = MNISTModelWrapper(sess,
-                              models.model_fn,
-                              ckpt_path,
-                              [28, 28, 3],
+    model = MNISTModelWrapper(sess=sess,
+                              model_fn=models.model_fn,
+                              ckpt_path=ckpt_path,
+                              image_shape=[28, 28, 3],
                               bottleneck_scopes=['fc1', 'fc5'])
 
+    # More debugging beauty
     if DEBUG:
       print(model)
 

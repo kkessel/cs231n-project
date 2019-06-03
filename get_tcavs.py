@@ -128,7 +128,8 @@ def main(model_name='MNIST Model 1',
          ckpt_path='models/mnist5_blue2.ckpt',
          target="zebra",
          num_random_concepts=1,
-         network_arch=5*[50]):
+         network_arch=5*[50],
+         bottleneck_scopes=["fc1"]):
   tf.reset_default_graph()
 
   with tf.Session() as sess:
@@ -136,7 +137,7 @@ def main(model_name='MNIST Model 1',
                               model_fn=models.model_fn,
                               ckpt_path=ckpt_path,
                               image_shape=[28, 28, 3],
-                              bottleneck_scopes=['fc1', 'fc4'],
+                              bottleneck_scopes=bottleneck_scopes,
                               network_arch=network_arch)
 
     # More debugging beauty
@@ -156,7 +157,9 @@ def main(model_name='MNIST Model 1',
     cav_dir = working_dir + '/cavs/'
     # where the images live.
     source_dir = "data/"
-    bottlenecks = ["fc1_relu", "fc4_relu"]  # @param
+    bottlenecks = []  # @param
+    for b in bottleneck_scopes:
+      bottlenecks.append(b + "_relu")
 
     utils.make_dir_if_not_exists(activation_dir)
     utils.make_dir_if_not_exists(working_dir)
@@ -167,7 +170,7 @@ def main(model_name='MNIST Model 1',
 
     target = target
     # concepts = ["blue", "green", "red", "cyan", "magenta", "yellow"]
-    concepts = ["blue_0"]
+    concepts = ["blue"]
     # random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
     #                    "not_blue_5", "not_blue_6", "not_blue_7", "not_blue_8", "not_blue_9",
     #                    "not_blue_10", "not_blue_11", "not_blue_12", "not_blue_13", "not_blue_14",

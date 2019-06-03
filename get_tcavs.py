@@ -127,6 +127,7 @@ def main(model_name='MNIST Model 1',
          cav_dir='tcav_class_test',
          ckpt_path='models/mnist5_blue2.ckpt',
          target="zebra",
+         num_random_concepts=1,
          network_arch=5*[50]):
   tf.reset_default_graph()
 
@@ -168,9 +169,14 @@ def main(model_name='MNIST Model 1',
     # concepts = ["blue", "green", "red", "cyan", "magenta", "yellow"]
     concepts = ["blue_0"]
     # random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
+    #                    "not_blue_5", "not_blue_6", "not_blue_7", "not_blue_8", "not_blue_9",
+    #                    "not_blue_10", "not_blue_11", "not_blue_12", "not_blue_13", "not_blue_14",
+    #                    "not_blue_15", "not_blue_16", "not_blue_17", "not_blue_18", "not_blue_19"]
+    # random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
     #                    "not_blue_5", "not_blue_6", "not_blue_7", "not_blue_8", "not_blue_9"]
-    random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
-                       "not_blue_5", "not_blue_6", "not_blue_7"]
+    random_concepts = []
+    for d in range(num_random_concepts):
+      random_concepts.append("not_blue_" + str(d))
     act_generator = act_gen.ImageActivationGenerator(model,
                                                      source_dir,
                                                      activation_dir,
@@ -187,10 +193,12 @@ def main(model_name='MNIST Model 1',
                        cav_dir=cav_dir,
                        random_concepts=random_concepts)
 
-    results = mytcav.run()
+    results = mytcav.run(num_workers=4)
     print(results)
 
     utils_plot.plot_results(results, random_concepts=random_concepts)
+
+    return results
 
 if __name__ == '__main__':
   main()

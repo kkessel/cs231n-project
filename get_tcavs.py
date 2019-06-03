@@ -9,6 +9,7 @@ from tcav import tcav
 import models
 
 from tensorflow.python.tools.inspect_checkpoint import print_tensors_in_checkpoint_file
+from tensorflow.python import pywrap_tensorflow
 
 # If you set this to True, we'll get suuuuuuper verbose output to debug stuff
 DEBUG = False
@@ -35,10 +36,17 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     if DEBUG:
       print("Tensor values in checkpoint")
       print_tensors_in_checkpoint_file(ckpt_path, all_tensors=True, tensor_name='')
-      tensor_names = [n.name for n in tf.get_default_graph().as_graph_def().node]
+      print("="*80)
+      tensor_model_names = [n.name for n in tf.get_default_graph().as_graph_def().node]
+      print("Tensors in model")
+      for name in tensor_model_names:
+        print(name)
       print("="*80)
       print("Tensors in checkpoint")
-      for name in tensor_names:
+      reader = pywrap_tensorflow.NewCheckpointReader(ckpt_path)
+      var_to_shape_map = reader.get_variable_to_shape_map()
+      tensor_ckpt_names = [n for n in sorted(var_to_shape_map)]
+      for name in tensor_ckpt_names:
         print(name)
       print("="*80)
       print("Variables in graph:")
@@ -106,7 +114,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
     bn_endpoints = {}
     for op in graph.get_operations():
       for scope in scopes:
-        if op.name.startswith(scope+'/') and \
+        if op.name.startswith(scope + '/') and \
            ('Add' in op.type or 'Relu' in op.type) :
           #name = op.name.split('/')[1]
           name = "_".join(op.name.split('/'))
@@ -138,13 +146,13 @@ def main(model_name='MNIST Model 1',
     #working_dir = "/tmp/" + user + '/' + project_name
     working_dir = project_name
     # where activations are stored (only if your act_gen_wrapper does so)
-    activation_dir =  working_dir+ '/activations/'
+    activation_dir =  working_dir + '/activations/'
     # where CAVs are stored.
     # You can say None if you don't wish to store any.
     cav_dir = working_dir + '/cavs/'
     # where the images live.
     source_dir = "data/"
-    bottlenecks = ["fc1_Relu", "fc5_Relu"]  # @param
+    bottlenecks = ["fc1_relu", "fc5_relu"]  # @param
 
     utils.make_dir_if_not_exists(activation_dir)
     utils.make_dir_if_not_exists(working_dir)
@@ -154,8 +162,13 @@ def main(model_name='MNIST Model 1',
     alphas = [0.1]
 
     target = target
-    concepts = ["blue","green","red","cyan","magenta","yellow"]
-    random_concepts = ["not_blue", "not_red", "not_green", "not_cyan", "not_magenta", "not_yellow"]
+    concepts = ["blue", "green", "red", "cyan", "magenta", "yellow"]
+    random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
+                       "not_red_0", "not_red_1", "not_red_2", "not_red_3", "not_red_4",
+                       "not_green_0", "not_green_1", "not_green_2", "not_green_3", "not_green_4",
+                       "not_cyan_0", "not_cyan_1", "not_cyan_2", "not_cyan_3", "not_cyan_4",
+                       "not_magenta_0", "not_magenta_1", "not_magenta_2", "not_magenta_3", "not_magenta_4",
+                       "not_yellow_0", "not_yellow_1", "not_yellow_2", "not_yellow_3", "not_yellow_4"]
     act_generator = act_gen.ImageActivationGenerator(model,
                                                      source_dir,
                                                      activation_dir,

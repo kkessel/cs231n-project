@@ -12,7 +12,6 @@ def bias_variable(shape, name='bias'):
 # The actual model function.
 # TODO: parametrize this atrocity
 def model_fn_with_scopes():
-  tf.reset_default_graph()
   F = 5
   C = 5
   INPUT = 28*28*3
@@ -60,7 +59,6 @@ def model_fn_with_scopes():
 
 
 def model_fn(network_arch):
-    tf.reset_default_graph()
     INPUT = 28*28*3
     OUTPUT = 10
 

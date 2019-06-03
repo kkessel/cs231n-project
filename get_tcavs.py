@@ -25,11 +25,12 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
                model_fn,
                ckpt_path,
                image_shape,
-               bottleneck_scopes):
+               bottleneck_scopes,
+               network_arch):
     super(MNISTModelWrapper, self).__init__(image_shape)
     self.sess = sess
     # Create the model and restore the weights
-    x_in, y, cross_entropy, y_, b_fc4 = model_fn()
+    x_in, y, cross_entropy, y_ = model_fn(network_arch)
     self.sess.run(tf.global_variables_initializer())
 
     # Debug the weird loading behavior...
@@ -99,7 +100,7 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
 
   def label_to_id(self, label):
     """Convert label (string) to index in the logit layer (id)."""
-    if 'zebra' in label:
+    if 'all_blue_2s' in label:
       label = '2'
     return int(label)
 
@@ -125,7 +126,8 @@ class MNISTModelWrapper(tcav_models.ImageModelWrapper):
 def main(model_name='MNIST Model 1',
          cav_dir='tcav_class_test',
          ckpt_path='models/mnist5_blue2.ckpt',
-         target="zebra"):
+         target="zebra",
+         network_arch=5*[50]):
   tf.reset_default_graph()
 
   with tf.Session() as sess:
@@ -133,7 +135,8 @@ def main(model_name='MNIST Model 1',
                               model_fn=models.model_fn,
                               ckpt_path=ckpt_path,
                               image_shape=[28, 28, 3],
-                              bottleneck_scopes=['fc1', 'fc5'])
+                              bottleneck_scopes=['fc1', 'fc4'],
+                              network_arch=network_arch)
 
     # More debugging beauty
     if DEBUG:
@@ -152,7 +155,7 @@ def main(model_name='MNIST Model 1',
     cav_dir = working_dir + '/cavs/'
     # where the images live.
     source_dir = "data/"
-    bottlenecks = ["fc1_relu", "fc5_relu"]  # @param
+    bottlenecks = ["fc1_relu", "fc4_relu"]  # @param
 
     utils.make_dir_if_not_exists(activation_dir)
     utils.make_dir_if_not_exists(working_dir)
@@ -162,13 +165,12 @@ def main(model_name='MNIST Model 1',
     alphas = [0.1]
 
     target = target
-    concepts = ["blue", "green", "red", "cyan", "magenta", "yellow"]
+    # concepts = ["blue", "green", "red", "cyan", "magenta", "yellow"]
+    concepts = ["blue_0"]
+    # random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
+    #                    "not_blue_5", "not_blue_6", "not_blue_7", "not_blue_8", "not_blue_9"]
     random_concepts = ["not_blue_0", "not_blue_1", "not_blue_2", "not_blue_3", "not_blue_4",
-                       "not_red_0", "not_red_1", "not_red_2", "not_red_3", "not_red_4",
-                       "not_green_0", "not_green_1", "not_green_2", "not_green_3", "not_green_4",
-                       "not_cyan_0", "not_cyan_1", "not_cyan_2", "not_cyan_3", "not_cyan_4",
-                       "not_magenta_0", "not_magenta_1", "not_magenta_2", "not_magenta_3", "not_magenta_4",
-                       "not_yellow_0", "not_yellow_1", "not_yellow_2", "not_yellow_3", "not_yellow_4"]
+                       "not_blue_5", "not_blue_6", "not_blue_7"]
     act_generator = act_gen.ImageActivationGenerator(model,
                                                      source_dir,
                                                      activation_dir,

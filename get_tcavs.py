@@ -131,8 +131,10 @@ def main(model_name='MNIST Model 1',
          network_arch=5*[50],
          bottleneck_scopes=["fc1"]):
   tf.reset_default_graph()
-
-  with tf.Session() as sess:
+  session_conf = tf.ConfigProto(
+                intra_op_parallelism_threads=5,
+                      inter_op_parallelism_threads=5)
+  with tf.Session(config=session_conf) as sess:
     model = MNISTModelWrapper(sess=sess,
                               model_fn=models.model_fn,
                               ckpt_path=ckpt_path,
@@ -199,7 +201,7 @@ def main(model_name='MNIST Model 1',
     results = mytcav.run(num_workers=4)
     print(results)
 
-    utils_plot.plot_results(results, random_concepts=random_concepts)
+    utils_plot.plot_results(results, random_concepts=random_concepts, name=cav_dir.split('/')[1])
 
     return results
 

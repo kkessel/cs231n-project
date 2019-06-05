@@ -1,4 +1,7 @@
 .DS_Store
 .ipynb_checkpoints/
 __pycache__/
+data/
+tcav_results/*/activations
+tcav_results/*/cavs/not_blue*not_blue*
 

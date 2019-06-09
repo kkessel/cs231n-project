@@ -5,3 +5,5 @@ data/
 tcav_results/*/activations
 tcav_results/*/cavs/not_blue*not_blue*
 
+*.npz
+*.gz

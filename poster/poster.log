@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  9 JUN 2019 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 JUN 2019 14:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -780,6 +780,25 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
 \c@@todonotes@numberoftodonotes=\count266
+) (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+
+/usr/local/texlive/2018/texmf-dist/tex/latex/caption/subcaption.sty:63: Package subcaption Error: This package can't be used in cooperation
+(subcaption)                with the subfig package.
+
+See the subcaption package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 \subcaption@CheckCompatibility
+                                   
+If you do not understand this error, please take a closer look
+at the documentation of the `subcaption' package, especially the
+section about errors.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/beamerposter/beamerposter.sty
 Package: beamerposter 2015/04/21 v.1.12 latex-beamer poster extension
  (/usr/local/texlive/2018/texmf-dist/tex/latex/type1cm/type1cm.sty
@@ -884,27 +903,24 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 
 LaTeX Warning: Label `fig:coins' multiply defined.
 
-
-LaTeX Warning: Label `fig:coins' multiply defined.
-
 )
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
-LaTeX Font Info:    ... okay on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 56.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 61.
+LaTeX Font Info:    ... okay on input line 61.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmss.fd
 File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -968,7 +984,7 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box94
-Package hyperref Info: Link coloring OFF on input line 56.
+Package hyperref Info: Link coloring OFF on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
@@ -976,9 +992,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count280
 )
-LaTeX Info: Redefining \ref on input line 56.
-LaTeX Info: Redefining \pageref on input line 56.
-LaTeX Info: Redefining \nameref on input line 56.
+LaTeX Info: Redefining \ref on input line 61.
+LaTeX Info: Redefining \pageref on input line 61.
+LaTeX Info: Redefining \nameref on input line 61.
  (./poster.out) (./poster.out)
 \@outlinefile=\write5
 \openout5 = `poster.out'.
@@ -1000,10 +1016,10 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-./poster.tex:56: Undefined control sequence.
+./poster.tex:61: Undefined control sequence.
 <argument> \@@magyar@captionfix 
                                 
-l.56 \begin{document}
+l.61 \begin{document}
                      
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1012,42 +1028,42 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 (./poster.nav)
-LaTeX Font Info:    Calculating math sizes for size <28.11> on input line 56.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 56.
+LaTeX Font Info:    Calculating math sizes for size <28.11> on input line 61.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 56.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 56.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 61.
  (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <28.11> on input line 56.
+(Font)              <28.11> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <19.67691> on input line 56.
+(Font)              <19.67691> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.055> on input line 56.
-LaTeX Font Info:    Try loading font information for OMS+lmss on input line 56.
-LaTeX Font Info:    No file OMSlmss.fd. on input line 56.
+(Font)              <14.055> on input line 61.
+LaTeX Font Info:    Try loading font information for OMS+lmss on input line 61.
+LaTeX Font Info:    No file OMSlmss.fd. on input line 61.
 
 
 LaTeX Font Warning: Font shape `OMS/lmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 56.
+(Font)              for symbol `textbraceleft' on input line 61.
 
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 56.
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 61.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Overfull \hbox (56.90549pt too wide) in paragraph at lines 56--56
+Overfull \hbox (56.90549pt too wide) in paragraph at lines 61--61
  [][]  
  []
 
@@ -1058,24 +1074,24 @@ Package epstopdf Info: Source file: <img/SU_Seal_Blk_pos.eps>
 (epstopdf)                    date: 2018-03-20 00:02:18
 (epstopdf)                    size: 60214 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/SU_Seal_Blk_pos-eps-converted-to.pdf img/SU_Seal_Blk_pos.eps>
-(epstopdf)             \includegraphics on input line 56.
+(epstopdf)             \includegraphics on input line 61.
 Package epstopdf Info: Output file is already uptodate.
 <img/SU_Seal_Blk_pos-eps-converted-to.pdf, id=13, 204.765pt x 204.765pt>
 File: img/SU_Seal_Blk_pos-eps-converted-to.pdf Graphic file (type pdf)
 <use img/SU_Seal_Blk_pos-eps-converted-to.pdf>
-Package pdftex.def Info: img/SU_Seal_Blk_pos-eps-converted-to.pdf  used on input line 56.
+Package pdftex.def Info: img/SU_Seal_Blk_pos-eps-converted-to.pdf  used on input line 61.
 (pdftex.def)             Requested size: 128.04341pt x 128.0374pt.
-LaTeX Font Info:    Calculating math sizes for size <13.56> on input line 56.
+LaTeX Font Info:    Calculating math sizes for size <13.56> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <13.56> on input line 56.
+(Font)              <13.56> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.49194> on input line 56.
+(Font)              <9.49194> on input line 61.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6.78> on input line 56.
+(Font)              <6.78> on input line 61.
 <img/icme_logo_trans.png, id=14, 902.37125pt x 298.11375pt>
 File: img/icme_logo_trans.png Graphic file (type png)
 <use img/icme_logo_trans.png>
-Package pdftex.def Info: img/icme_logo_trans.png  used on input line 56.
+Package pdftex.def Info: img/icme_logo_trans.png  used on input line 61.
 (pdftex.def)             Requested size: 387.5577pt x 128.0374pt.
 \openout4 = `poster.vrb'.
 
@@ -1104,40 +1120,61 @@ Overfull \hbox (8.90242pt too wide) in paragraph at lines 73--83
  []$[]$  
  []
 
-<img/graph_fig2.pdf, id=20, 587.19376pt x 395.4775pt>
-File: img/graph_fig2.pdf Graphic file (type pdf)
-<use img/graph_fig2.pdf>
-Package pdftex.def Info: img/graph_fig2.pdf  used on input line 105.
-(pdftex.def)             Requested size: 429.78166pt x 289.45651pt.
-<img/model_big.pdf, id=21, 849.1725pt x 496.85625pt>
+<img/mnist_bw.png, id=20, 234.8775pt x 229.85875pt>
+File: img/mnist_bw.png Graphic file (type png)
+<use img/mnist_bw.png>
+Package pdftex.def Info: img/mnist_bw.png  used on input line 105.
+(pdftex.def)             Requested size: 142.26378pt x 139.22455pt.
+<img/mnist_color.png, id=21, 233.87375pt x 228.855pt>
+File: img/mnist_color.png Graphic file (type png)
+<use img/mnist_color.png>
+Package pdftex.def Info: img/mnist_color.png  used on input line 107.
+(pdftex.def)             Requested size: 142.26378pt x 139.21721pt.
+<img/model_big.pdf, id=22, 849.1725pt x 496.85625pt>
 File: img/model_big.pdf Graphic file (type pdf)
 <use img/model_big.pdf>
-Package pdftex.def Info: img/model_big.pdf  used on input line 125.
+Package pdftex.def Info: img/model_big.pdf  used on input line 128.
 (pdftex.def)             Requested size: 573.03857pt x 335.30284pt.
 
-Overfull \hbox (8.90242pt too wide) in paragraph at lines 92--141
+Overfull \hbox (8.90242pt too wide) in paragraph at lines 92--144
  []$[]$  
  []
 
-<img/acc_vs_topk.png, id=22, 619.31375pt x 438.63875pt>
+<img/acc_vs_topk.png, id=23, 619.31375pt x 438.63875pt>
 File: img/acc_vs_topk.png Graphic file (type png)
 <use img/acc_vs_topk.png>
-Package pdftex.def Info: img/acc_vs_topk.png  used on input line 163.
+Package pdftex.def Info: img/acc_vs_topk.png  used on input line 166.
 (pdftex.def)             Requested size: 573.03857pt x 405.90181pt.
-LaTeX Font Info:    Calculating math sizes for size <23.44> on input line 183.
+LaTeX Font Info:    Calculating math sizes for size <23.44> on input line 189.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <23.44> on input line 183.
+(Font)              <23.44> on input line 189.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <16.40793> on input line 183.
+(Font)              <16.40793> on input line 189.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <11.72> on input line 183.
+(Font)              <11.72> on input line 189.
 
-Overfull \hbox (8.90242pt too wide) in paragraph at lines 155--192
+LaTeX Warning: Reference `fig:dataset_biased' on page 1 undefined on input line 189.
+
+
+LaTeX Warning: Reference `fig:dataset_biased' on page 1 undefined on input line 189.
+
+
+Overfull \hbox (8.90242pt too wide) in paragraph at lines 158--200
  []$[]$  
  []
 
+./poster.vrb:208: Misplaced alignment tab character &.
+l.208 ...es. Mnist handwritten digit database. AT&
+                                                  T Labs [Online]. Available...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
 
-Overfull \hbox (8.90242pt too wide) in paragraph at lines 195--207
+
+Overfull \hbox (8.90242pt too wide) in paragraph at lines 203--212
  []$[]$  
  []
 
@@ -1149,15 +1186,15 @@ Package epstopdf Info: Source file: <img/SU_Seal_Blk_pos.eps>
 (epstopdf)                    date: 2018-03-20 00:02:18
 (epstopdf)                    size: 60214 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/SU_Seal_Blk_pos-eps-converted-to.pdf img/SU_Seal_Blk_pos.eps>
-(epstopdf)             \includegraphics on input line 290.
+(epstopdf)             \includegraphics on input line 300.
 Package epstopdf Info: Output file is already uptodate.
 File: img/SU_Seal_Blk_pos-eps-converted-to.pdf Graphic file (type pdf)
 <use img/SU_Seal_Blk_pos-eps-converted-to.pdf>
-Package pdftex.def Info: img/SU_Seal_Blk_pos-eps-converted-to.pdf  used on input line 290.
+Package pdftex.def Info: img/SU_Seal_Blk_pos-eps-converted-to.pdf  used on input line 300.
 (pdftex.def)             Requested size: 128.04341pt x 128.0374pt.
 File: img/icme_logo_trans.png Graphic file (type png)
 <use img/icme_logo_trans.png>
-Package pdftex.def Info: img/icme_logo_trans.png  used on input line 290.
+Package pdftex.def Info: img/icme_logo_trans.png  used on input line 300.
 (pdftex.def)             Requested size: 387.5577pt x 128.0374pt.
 
 Overfull \hbox (56.90549pt too wide) has occurred while \output is active
@@ -1170,13 +1207,8 @@ pdfTeX warning (ext4): destination with the same identifier (name{fig:coins}) ha
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.290 \end{frame}
-                 pdfTeX warning (ext4): destination with the same identifier (name{fig:coins}) has been already used, duplicate ignored
-
-\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
-                                                  
-l.290 \end{frame}
-                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icme_logo_trans.png> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/graph_fig2.pdf> <./img/model_big.pdf> <./img/acc_vs_topk.png>]
+l.300 \end{frame}
+                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icme_logo_trans.png> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/mnist_bw.png> <./img/mnist_color.png> <./img/model_big.pdf> <./img/acc_vs_topk.png>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1193,11 +1225,11 @@ Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 291.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 291.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 301.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 301.
 (./poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 291.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 291.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 301.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 301.
 Package rerunfilecheck Info: File `poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1205,22 +1237,27 @@ Package rerunfilecheck Info: File `poster.out' has not changed.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 23846 strings out of 492649
- 458460 string characters out of 6129622
- 602741 words of memory out of 5000000
- 27116 multiletter control sequences out of 15000+600000
- 65799 words of font info for 73 fonts, out of 8000000 for 9000
+ 23867 strings out of 492649
+ 458955 string characters out of 6129622
+ 605330 words of memory out of 5000000
+ 27132 multiletter control sequences out of 15000+600000
+ 68824 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,19n,85p,803b,953s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,19n,95p,803b,1049s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{fig:dataset_biased} has been referenced but does not exist, replaced by a fixed one
+
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on poster.pdf (1 page, 913582 bytes).
+Output written on poster.pdf (1 page, 819573 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 84 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 160 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
+ 9 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

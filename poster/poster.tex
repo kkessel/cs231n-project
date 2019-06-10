@@ -10,6 +10,11 @@
 \usepackage{booktabs}
 \usepackage{todonotes}
 
+%\usepackage[demo]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+
 \usepackage[orientation=landscape,size=a1,scale=1.6]{beamerposter}
 
 \captionsetup[figure]{labelformat=empty}% redefines the caption setup of the figures environment in the beamer class.
@@ -50,7 +55,7 @@ label=\protect\usebeamerfont{enumerate item}%
 
 \logoleft{\begin{center} \includegraphics[height=4.5cm]{img/SU_Seal_Blk_pos}\end{center}}
 \logoright{\begin{center} \includegraphics[height=4.5cm]{img/icme_logo_trans} \end{center}}
-\footer{CS 236: Deep Generative Models $|$ Fall 2019 \hspace{38cm} \{\texttt{chami, clazarus, marcthib}\}\texttt{@stanford.edu} }
+\footer{CS 236: Deep Generative Models $|$ Fall 2019 \hspace{38cm} \{\texttt{kkessel, clazarus, jvrsgsty}\}\texttt{@stanford.edu} }
 %\date{}
 
 \begin{document}
@@ -104,16 +109,16 @@ label=\protect\usebeamerfont{enumerate item}%
 \begin{textblock}{\colwidth}(\firstcolpos,\vstartCols)
 
 \begin{paddedBlock}{Summary}
-We tackle the problem of \textbf{node classification} where the goal is to classify nodes in a graph by leveraging nodes' features and graph structure.
-We focus on \textbf{semi-supervised} settings where only a subset of nodes is labelled and we aim at \textbf{transferring knowledge} across labelled and unlabelled nodes. 
+Deep Neural Networks are very useful at classifying tasks but their intrinsic complexity makes it really hard to explain the reasoning behind a classification outcome. In recent work [2], statistical methods were introduced to help assess the influence of human intelligible concepts in classification outcomes.
+We aim to asses and extend such methods by leveraging formal methods for Neural Network verification.
 \begin{itemize}
-\item \textbf{Problem:} node classification on a new population, not connected to the labelled nodes
-\item \textbf{Solution:} hallucinate edges between the labelled nodes and the unlabelled nodes, to reinforce the information flow
-\item \textbf{Results:} our method achieves +3.6\% and +3.4\% gain in accuracy over standard baselines on \texttt{cora} and \texttt{citeseer} datasets.
+\item \textbf{Problem:} Why did the network classify image $\mathcal{i}$ with label $k$?
+\item \textbf{Solution:} Come up with classes TCAV etc bla bla? or more like we tried to test the TCAV method??
+\item \textbf{Preliminary Results:} nothing nothing nothing.
 \end{itemize}
 \end{paddedBlock}
 
-\begin{paddedBlock}{Problem Setup}
+\begin{paddedBlock}{Talk about TCAV ?}
 \underline{Input}:
 \begin{itemize}
 \item adjacency matrices $A_L$ and $A_U$ for the two sets of nodes;
@@ -135,7 +140,7 @@ We focus on \textbf{semi-supervised} settings where only a subset of nodes is la
 %\vspace{-5mm}
 \end{paddedBlock}
 
-\begin{paddedBlock}{Baseline model}
+\begin{paddedBlock}{Neural Network Verification}
 \texttt{GCN} [1] for node classification: $\hat{y} = h(Ah(AXW_1)W_2)$
 \begin{figure}
     \centering
@@ -154,26 +159,26 @@ We focus on \textbf{semi-supervised} settings where only a subset of nodes is la
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textblock}{\colwidth}(\secondcolpos,\vstartCols)
-\begin{paddedBlock}{Approach - Hallucigraph}
+\begin{paddedBlock}{Approach: TCAV + Verification}
 %\vspace{8mm}
 
-\alert{Three-step process}
+\alert{Data bla bla}
   \begin{itemize}
-    \item learn low-dimensional node embeddings to encode node similarity (\texttt{VGAE} [2])
-    \item hallucinate edges and complete the adjacency matrix (edges) 
-    \item run a \texttt{GCN} with the completed adjacency to predict node labels
+    \item talk about data
   \end{itemize}
-  \begin{figure}
-      \centering
-      %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-      %\missingfigure{Fancy figure with projected graphs}
-      \includegraphics[width=0.60\textwidth]{img/graph_fig2.pdf}
-      %\caption{Caption}
-      \label{fig:coins}
-  \end{figure}
+
+\begin{figure}%
+    \centering
+    \subfloat[label 1]{{\includegraphics[width=5cm]{img/mnist_bw.png} }}%
+    \qquad
+    \subfloat[label 2]{{\includegraphics[width=5cm]{img/mnist_color.png} }}%
+    \caption{2 Figures side by side}%
+    \label{fig:example}%
+\end{figure}
+
 %\vspace{8mm}
 
-\alert{1. Link prediction - Variational Graph Auto-Encoder (\texttt{VGAE}):}
+\alert{Maybe talk about classe sand support vector}
 \begin{itemize}
   \item $Z\sim\mathcal{N}(\mu_Z,\sigma_Z^2)\ \ \mathrm{and}\ \ \tilde{A}=\sigma(ZZ^T).$
   \item with $\mu_Z,\sigma_Z=\mathrm{GCN}(A, X)$
@@ -233,21 +238,26 @@ We focus on \textbf{semi-supervised} settings where only a subset of nodes is la
 %\vspace{8mm}
 \alert{Node classification results}
 
-\begin{table}[h!]\centering
-\begin{tabular}{@{}rr|rrcrrrcrrr@{}}\toprule
-\multicolumn{1}{c}{Model} & \phantom{abc}  &\multicolumn{1}{c}{cora} & \phantom{abc}  & \multicolumn{1}{c}{citeseer}  \\
-\midrule
-\midrule
-\multicolumn{1}{c}{MLP} & \phantom{abc}  &56.4\% &  &56.8 \%   \\
-\midrule
-\multicolumn{1}{c}{GCN} & \phantom{abc}  &71.3\% &  & 65.8\%   \\
-\midrule
-\multicolumn{1}{c}{Hallucigraph} & \phantom{abc}  &\textbf{74.9\%} &  & \textbf{69.2\%}   \\
-\bottomrule
+\begin{table}
+\centering
+\begin{tabular}{lcccc}
+\hline
+
+\textbf{model} &  \textbf{balanced} &   \textbf{blue 2} &    \textbf{red 2} &  \textbf{green 2} \\ \hline 
+\texttt{balanced\_5x50} &    $0.942$ &  $0.942$ &  $0.941$ &  $0.944$ \\
+\texttt{blue2\_5x50} &    $0.780$ &  $0.952$ &  $0.682$ &  $0.689$ \\
+\texttt{balanced\_3x50} &    $0.942$ &  $0.940$ &  $0.942$ &  $0.941$ \\
+\texttt{blue2\_3x50} &    $0.724$ &  $0.954$ &  $0.675$ &  $0.684$ \\
+\texttt{balanced\_3x20} &    $0.890$ &  $0.890$ &  $0.891$ &  $0.888$ \\
+\texttt{blue2\_3x20} &    $0.708$ &  $0.923$ &  $0.663$ &  $0.672$ \\
+\hline
+
 \end{tabular}
-\caption{Accuracy results for node classification task on three publication datasets where we removed all $LU$ edges; using plain nodes features without edges (MLP); using the edges within labelled nodes and within unlabelled nodes (GCN); using Hallucigraph.}
-\label{restable}
+\caption{Accuracies for various models and datasets. The \texttt{balanced\_DxW} models are trained on a color-balanced dataset, and the \texttt{blue2\_DxW} models are trained on a color-biased dataset where all $2$'s are blue, as shown in Fig~\ref{fig:dataset_biased}. Columns indicate validation datasets which are balanced or have a blue, green, or red bias on class $2$, respectively. }
+\label{table:accuracies}
 \end{table}
+
+
 
 \begin{itemize}
   \item As shown in [1], the GCN improves on standalone MLP by leveraging the connections between nodes
@@ -258,16 +268,13 @@ We focus on \textbf{semi-supervised} settings where only a subset of nodes is la
 
 
 \begin{paddedBlock}{References}
-\footnotesize{[1] Thomas N Kipf and Max Welling. Semi-supervised classification with graph convolutional
-networks. arXiv preprint arXiv:1609.02907, 2016.}
+\footnotesize{[1] G. Katz, C. Barrett, D. L. Dill, K. Julian, and M. J. Kochenderfer. Reluplex: An efficient smt solver for verifying deep neural networks. In International Conference on Computer Aided Verification, pages 97–117. Springer, 2017}
 
-\footnotesize{[2] Thomas N Kipf and Max Welling. Variational graph auto-encoders. arXiv preprint
-arXiv:1611.07308, 2016.}
+\footnotesize{[2] B. Kim, M. Wattenberg, J. Gilmer, C. J. Cai, J. Wexler, F. B. Viegas, and R. Sayres. Interpretability beyond feature attribution: Quantitative testing with concept activation vectors (tcav). In ICML, 2018}
 
-\footnotesize{[3] Aditya Grover, Aaron Zweig, and Stefano Ermon. Graphite: Iterative generative modeling of
-graphs. arXiv preprint arXiv:1803.10459, 2018}
+\footnotesize{[3] Y. LeCun, C. Cortes, and C. Burges. Mnist handwritten digit database. AT&T Labs [Online]. Available: http://yann. lecun. com/exdb/mnist, 2:18, 2010}
 
-\footnotesize{[4] Eric Jang, Shixiang Gu, and Ben Poole. Categorical reparameterization with gumbel-softmax.arXiv preprint arXiv:1611.01144, 2016}
+\footnotesize{[4] C. Liu, T. Arnon, C. Lazarus, C. Barrett, and M. J. Kochenderfer. Algorithms for verifying deep neural networks. CoRR, abs/1903.06758, 2019}
 
 \end{paddedBlock}
 \end{textblock}

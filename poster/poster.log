@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  8 JUN 2019 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  9 JUN 2019 23:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1072,20 +1072,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <9.49194> on input line 56.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6.78> on input line 56.
-Package epstopdf Info: Source file: <img/icmelogo.eps>
-(epstopdf)                    date: 2019-06-08 17:52:38
-(epstopdf)                    size: 1645087 bytes
-(epstopdf)             Output file: <img/icmelogo-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-06-08 17:53:28
-(epstopdf)                    size: 214049 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/icmelogo-eps-converted-to.pdf img/icmelogo.eps>
-(epstopdf)             \includegraphics on input line 56.
-Package epstopdf Info: Output file is already uptodate.
-<img/icmelogo-eps-converted-to.pdf, id=14, 216.81pt x 109.40875pt>
-File: img/icmelogo-eps-converted-to.pdf Graphic file (type pdf)
-<use img/icmelogo-eps-converted-to.pdf>
-Package pdftex.def Info: img/icmelogo-eps-converted-to.pdf  used on input line 56.
-(pdftex.def)             Requested size: 253.72952pt x 128.0374pt.
+<img/icme_logo_trans.png, id=14, 902.37125pt x 298.11375pt>
+File: img/icme_logo_trans.png Graphic file (type png)
+<use img/icme_logo_trans.png>
+Package pdftex.def Info: img/icme_logo_trans.png  used on input line 56.
+(pdftex.def)             Requested size: 387.5577pt x 128.0374pt.
 \openout4 = `poster.vrb'.
 
 (./poster.vrb
@@ -1093,7 +1084,7 @@ Overfull \hbox (8.90242pt too wide) in paragraph at lines 41--49
  []$[]$  
  []
 
-<img/graph_prob.pdf, id=17, 590.205pt x 183.68625pt>
+<img/graph_prob.pdf, id=18, 590.205pt x 183.68625pt>
 File: img/graph_prob.pdf Graphic file (type pdf)
 <use img/graph_prob.pdf>
 Package pdftex.def Info: img/graph_prob.pdf  used on input line 62.
@@ -1103,7 +1094,7 @@ Overfull \hbox (8.90242pt too wide) in paragraph at lines 51--71
  []$[]$  
  []
 
-<img/model_small.pdf, id=18, 966.61125pt x 383.4325pt>
+<img/model_small.pdf, id=19, 966.61125pt x 383.4325pt>
 File: img/model_small.pdf Graphic file (type pdf)
 <use img/model_small.pdf>
 Package pdftex.def Info: img/model_small.pdf  used on input line 79.
@@ -1113,12 +1104,12 @@ Overfull \hbox (8.90242pt too wide) in paragraph at lines 73--83
  []$[]$  
  []
 
-<img/graph_fig2.pdf, id=19, 587.19376pt x 395.4775pt>
+<img/graph_fig2.pdf, id=20, 587.19376pt x 395.4775pt>
 File: img/graph_fig2.pdf Graphic file (type pdf)
 <use img/graph_fig2.pdf>
 Package pdftex.def Info: img/graph_fig2.pdf  used on input line 105.
 (pdftex.def)             Requested size: 429.78166pt x 289.45651pt.
-<img/model_big.pdf, id=20, 849.1725pt x 496.85625pt>
+<img/model_big.pdf, id=21, 849.1725pt x 496.85625pt>
 File: img/model_big.pdf Graphic file (type pdf)
 <use img/model_big.pdf>
 Package pdftex.def Info: img/model_big.pdf  used on input line 125.
@@ -1128,7 +1119,7 @@ Overfull \hbox (8.90242pt too wide) in paragraph at lines 92--141
  []$[]$  
  []
 
-<img/acc_vs_topk.png, id=21, 619.31375pt x 438.63875pt>
+<img/acc_vs_topk.png, id=22, 619.31375pt x 438.63875pt>
 File: img/acc_vs_topk.png Graphic file (type png)
 <use img/acc_vs_topk.png>
 Package pdftex.def Info: img/acc_vs_topk.png  used on input line 163.
@@ -1164,19 +1155,10 @@ File: img/SU_Seal_Blk_pos-eps-converted-to.pdf Graphic file (type pdf)
 <use img/SU_Seal_Blk_pos-eps-converted-to.pdf>
 Package pdftex.def Info: img/SU_Seal_Blk_pos-eps-converted-to.pdf  used on input line 290.
 (pdftex.def)             Requested size: 128.04341pt x 128.0374pt.
-Package epstopdf Info: Source file: <img/icmelogo.eps>
-(epstopdf)                    date: 2019-06-08 17:52:38
-(epstopdf)                    size: 1645087 bytes
-(epstopdf)             Output file: <img/icmelogo-eps-converted-to.pdf>
-(epstopdf)                    date: 2019-06-08 17:53:28
-(epstopdf)                    size: 214049 bytes
-(epstopdf)             Command: <repstopdf --outfile=img/icmelogo-eps-converted-to.pdf img/icmelogo.eps>
-(epstopdf)             \includegraphics on input line 290.
-Package epstopdf Info: Output file is already uptodate.
-File: img/icmelogo-eps-converted-to.pdf Graphic file (type pdf)
-<use img/icmelogo-eps-converted-to.pdf>
-Package pdftex.def Info: img/icmelogo-eps-converted-to.pdf  used on input line 290.
-(pdftex.def)             Requested size: 253.72952pt x 128.0374pt.
+File: img/icme_logo_trans.png Graphic file (type png)
+<use img/icme_logo_trans.png>
+Package pdftex.def Info: img/icme_logo_trans.png  used on input line 290.
+(pdftex.def)             Requested size: 387.5577pt x 128.0374pt.
 
 Overfull \hbox (56.90549pt too wide) has occurred while \output is active
  [][]  
@@ -1194,7 +1176,7 @@ l.290 \end{frame}
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.290 \end{frame}
-                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icmelogo-eps-converted-to.pdf> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/graph_fig2.pdf> <./img/model_big.pdf> <./img/acc_vs_topk.png>]
+                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icme_logo_trans.png> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/graph_fig2.pdf> <./img/model_big.pdf> <./img/acc_vs_topk.png>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1228,17 +1210,17 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  23846 strings out of 492649
- 458517 string characters out of 6129622
- 602731 words of memory out of 5000000
+ 458460 string characters out of 6129622
+ 602741 words of memory out of 5000000
  27116 multiletter control sequences out of 15000+600000
  65799 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,19n,85p,803b,953s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on poster.pdf (1 page, 1071289 bytes).
+Output written on poster.pdf (1 page, 913582 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
+ 176 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  7 named destinations out of 1000 (max. 500000)
  84 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -92,13 +92,10 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
 \begin{paddedBlock}{Approach: TCAV + Verification}
 %\vspace{8mm}
 
-\alert{Three-step process}
+\alert{Data bla bla}
   \begin{itemize}
-    \item learn low-dimensional node embeddings to encode node similarity (\texttt{VGAE} [2])
-    \item hallucinate edges and complete the adjacency matrix (edges)
-    \item run a \texttt{GCN} with the completed adjacency to predict node labels
+    \item talk about data
   \end{itemize}
-
 
 \begin{figure}%
     \centering
@@ -109,13 +106,30 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
     \label{fig:example}%
 \end{figure}
 
+\begin{figure}
+    \centering
+    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
+    %\missingfigure{Hallucigraph architecture sketch}
+    \includegraphics[width=.2\textwidth]{img/cav_viz}
+    %\caption{Caption}
+    \label{fig:big}
+\end{figure}
+
 %\vspace{8mm}
 
-\alert{1. Link prediction - Variational Graph Auto-Encoder (\texttt{VGAE}):}
-\begin{itemize}
-  \item $Z\sim\mathcal{N}(\mu_Z,\sigma_Z^2)\ \ \mathrm{and}\ \ \tilde{A}=\sigma(ZZ^T).$
-  \item with $\mu_Z,\sigma_Z=\mathrm{GCN}(A, X)$
-\end{itemize}
+\alert{Maybe talk about classe sand support vector}
+LALALALALAL
+
+\begin{figure}%
+    \centering
+    \subfloat[label 1]{{\includegraphics[width=5cm]{img/data_distr_balanced_test_new.pdf} }}%
+    \qquad
+    \subfloat[label 2]{{\includegraphics[width=5cm]{img/data_distr_blue2_test_new.pdf} }}%
+    \caption{2 Figures side by side}%
+    \label{fig:example}%
+\end{figure}
+
+
 \begin{align*}
 \mathcal{L}_{LP}=&-\mathbb{E}_{Z\sim q(Z|A,X)}[A_{ij}\mathrm{log}\tilde{A}_{ij}+(1-A_{ij})\mathrm{log}(1-\tilde{A}_{i,j})]\\
 &+\mathrm{KL}(q(Z|A,X)||p(Z)).
@@ -125,7 +139,7 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
     \centering
     %\missingfigure[width=0.5\textwidth]{2 graphs fig}
     %\missingfigure{Hallucigraph architecture sketch}
-    \includegraphics[width=.8\textwidth]{img/model_big.pdf}
+    \includegraphics[width=.8\textwidth]{img/scree_plot}
     %\caption{Caption}
     \label{fig:big}
 \end{figure}
@@ -158,15 +172,10 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
 \begin{paddedBlock}{Results}
 %\vspace{8mm}
 
-\alert{Classification performance per number of hallucinated edges (cora)}
-  \begin{figure}
-      \centering
-      %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-      %\missingfigure{Edge inference ROC curve}
-      \includegraphics[width=.8\textwidth]{img/acc_vs_topk.png}
-      %\caption{Caption}
-      \label{fig:coins}
-  \end{figure}
+\alert{Need to talk about significant CAVs}
+Then talk about the avenues and boulevards.
+
+
 
 %\vspace{8mm}
 \alert{Node classification results}
@@ -186,15 +195,13 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
 \hline
 
 \end{tabular}
-\caption{Accuracies for various models and datasets. The \texttt{balanced\_DxW} models are trained on a color-balanced dataset, and the \texttt{blue2\_DxW} models are trained on a color-biased dataset where all $2$'s are blue, as shown in Fig~\ref{fig:dataset_biased}. Columns indicate validation datasets which are balanced or have a blue, green, or red bias on class $2$, respectively. }
-\label{table:accuracies}
 \end{table}
 
 
 
 \begin{itemize}
-  \item As shown in [1], the GCN improves on standalone MLP by leveraging the connections between nodes
-  \item By adding "hallucinated" edges, we improve the connectivity structure, and we obtain more predictive power
+  \item Try to salvage somethibg
+  \item Nothing worked : )
 \end{itemize}
 
 \end{paddedBlock}

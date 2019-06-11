@@ -113,18 +113,18 @@ label=\protect\usebeamerfont{enumerate item}%
 
 \begin{paddedBlock}{Summary}
 Although deep neural networks have proved to be very successful at classification tasks, their intrinsic complexity makes reasoning about a classification outcome difficult.
-In recent work [2], statistical methods were introduced as a means to assess the influence of human-intelligible concepts in classification outcomes.
+In recent work [2], statistical methods were introduced as a means to quantify the influence of human-intelligible concepts in classification outcomes.
 We aim to assess and extend such methods by leveraging formal methods for neural network verification.
 \begin{itemize}
 \item \textbf{Question:} How important is a concept in classifying image $i$ as label $k$? e.g. Is the presence of stripes relevant in the classification of an animal as a zebra?
-\item \textbf{Approach \#1:} Use TCAV framework to provide statistical guarantees
+\item \textbf{Approach \#1:} Use the TCAV framework to provide statistical guarantees
 \item \textbf{Approach \#2:} Use neural network verification methods [1] to provide formal guarantees
 \end{itemize}
 \end{paddedBlock}
 
 \begin{paddedBlock}{Testing with Concept Activation Vectors (TCAV) [2]}
 \begin{itemize}
-\item \textbf{Idea:} Identify the region in the latent space corresponding to layer $\ell$ of the network in which a human-intelligible concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with the CAV.
+\item \textbf{Idea:} Identify the region in the latent space corresponding to layer $\ell$ of the network in which a concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with the CAV.
 \item \textbf{Inputs:}
 	\begin{itemize}
 	\footnotesize{
@@ -147,6 +147,8 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 \end{paddedBlock}
 
 \begin{paddedBlock}{Neural Network Verification}
+
+For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, we seek to verify statements of the following form:
 \[ \vec x\in \mathcal{X} \Rightarrow \vec y=\vec f(\vec x)\in \mathcal{Y} \]
 \end{paddedBlock}
 \end{textblock}
@@ -172,12 +174,12 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 
 \begin{figure}%
     \centering
-    \subfloat[Colorized MNIST training set for classification of hand-written digits]{{\includegraphics[width=.2\textwidth]{img/mnist_color.png}}}%
+    \subfloat{\includegraphics[width=.2\textwidth]{img/mnist_color.png}}}%
     \qquad
-    \subfloat[Blue concept training set and non-blue training set to learn CAVs for concept blue]{\includegraphics[width=.2\textwidth]{img/cav_viz}}}%
+    \subfloat{\includegraphics[width=.2\textwidth]{img/cav_viz}}}%
     \qquad
-    \subfloat[blah blah]{\includegraphics[width=.2\textwidth]{img/blue2s}}\
-%    \caption{2 Figures side by side}%
+    \subfloat{\includegraphics[width=.2\textwidth]{img/blue2s}}\
+    \caption{\textcolor{cardinal}{(a)} Colorized MNIST training set for classification of hand-written digits \textcolor{cardinal}{(b)} Blue concept training set and non-concept training set to learn CAVs for the concept blue \textcolor{cardinal}{(c)} Data set used to test the relevance of the concept blue in the classification of images belonging to class 2 }%
     \label{fig:example}%
 \end{figure}
 
@@ -195,27 +197,31 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 %    \label{fig:big}
 %\end{figure}
 
-%\vspace{8mm}
+\vspace{8mm}
 
 \alert{Sanity Check: Test Accuracies of Balanced and Biased Models}
 \begin{figure}%
     \centering
-    \subfloat[Accuracy of model trained on color-balanced data set and tested on color-biased data sets (rows)]{{\includegraphics[width=.4\textwidth, backgroundcolor=white]{img/data_distr_balanced_test_new2} }}%
+    \subfloat[Accuracy of model trained on color-balanced data set and tested on color-biased data sets]{{\includegraphics[width=.4\textwidth, backgroundcolor=white]{img/data_distr_balanced_test_new2} }}%
     \qquad
     \subfloat[Accuracy of model trained and tested on color-biased data-set]{{\includegraphics[width=.4\textwidth]{img/data_distr_blue2_test_new2} }}%
 %    \caption{2 Figures side by side}%
     \label{fig:example}%
 \end{figure}
 
+\vspace{8mm}
+
 \alert{Results}
+
+\vspace{8mm}
 
 \begin{figure}%
     \centering
-    \subfloat[TCAV scores for testing the concept blue for class 2]{{\includegraphics[width=.4\textwidth]{img/table1} }}%
+    \subfloat{{\includegraphics[width=.4\textwidth]{img/table1} }}%
     \qquad
-    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
+    \subfloat{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
     \qquad
-%    \caption{2 Figures side by side}%
+    \caption{\textcolor{cardinal}{(a)} TCAV scores for testing the concept blue for class 2 \textcolor{cardinal}{(b)} Percentage of variation explained by the singular vectors of the CAVs for the concept blue, for the models trained on the color-balanced and blue-biased data sets}%
     \label{fig:example}%
 \end{figure}
 

@@ -124,7 +124,7 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 
 \begin{paddedBlock}{Testing with Concept Activation Vectors (TCAV) [2]}
 \begin{itemize}
-\item \textbf{Idea:} \footnotesize{Identify the region in the latent space corresponding to layer $\ell$ of the network in which a concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with respect to the CAV.}
+\item \textbf{Idea:} \footnotesize{Identify the region in the latent space corresponding to layer $\ell$ of the network in which a concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking the directional derivative of the layer $\ell$ activations for image $i$ with respect to the CAV.}
 \end{itemize}
 \begin{itemize}
 \item \textbf{Inputs:}
@@ -139,9 +139,9 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 	\begin{itemize}
 	\footnotesize{
 	\item CAV $v_c^\ell$ for concept $C$ at layer $\ell$
-    \item score $S_{C,k}^\ell(\mathbf{x})$ of the sensitivity of the model's prediction of class $k$ to concept $C$
+    \item sensitivity $S_{C,k}^\ell(\mathbf{x})$ of the model's prediction of image $\mathbf{x}$ as class $k$ to concept $C$
     	\[ S_{C,k}^\ell(\mathbf{x}) = \nabla h_k^\ell\left(f_\ell(\mathbf{x})\right) \cdot \mathbf{v}_C^\ell \]
-    \item TCAV score aggregating scores for each training image $\mathbf{x}$ in class $X_k$
+    \item TCAV score aggregating sensitivities for each training image $\mathbf{x}$ in class $k$
     	\[ \text{TCAV}_{C, k}^\ell = \frac{\left| \mathbf{x} \in X_k : S_{C,k}^\ell(\mathbf{x}) > 0 \right|}{\left| X_k \right|} \]
     \item $p$-value testing the hypothesis that concept $C$ is not relevant in classifying images of class $k$
     }
@@ -183,7 +183,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
     \subfloat{\includegraphics[width=.2\textwidth]{img/cav_viz2}}}%
     \qquad
     \subfloat{\includegraphics[width=.2\textwidth]{img/blue2s}}\
-    \caption{\textcolor{cardinal}{(a)} Colorized MNIST training set for classification of hand-written digits \textcolor{cardinal}{(b)} Blue concept training set and non-concept training set to learn CAVs for the concept blue \textcolor{cardinal}{(c)} Data set used to test the relevance of the concept blue in the classification of images belonging to class 2 }%
+    \caption{\textcolor{cardinal}{(a)} Colorized MNIST training set for classification of hand-written digits \textcolor{cardinal}{(b)} Concept (left) and non-concept (right) training sets to learn CAVs for the concept blue \textcolor{cardinal}{(c)} Data set used to test the relevance of the concept blue in the classification of images belonging to class 2 }%
     \label{fig:example}%
 \end{figure}
 
@@ -208,7 +208,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
     \centering
     \subfloat[Accuracy of model trained on color-balanced data set and tested on color-biased data sets]{{\includegraphics[width=.4\textwidth, backgroundcolor=white]{img/data_distr_balanced_test_new2} }}%
     \qquad
-    \subfloat[Accuracy of model trained and tested on color-biased data-set]{{\includegraphics[width=.4\textwidth]{img/data_distr_blue2_test_new2} }}%
+    \subfloat[Accuracy of model trained on blue-biased data set and tested on color-biased data sets]{{\includegraphics[width=.4\textwidth]{img/data_distr_blue2_test_new2} }}%
 %    \caption{2 Figures side by side}%
     \label{fig:example}%
 \end{figure}
@@ -260,7 +260,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 \item \textbf{Output sets:}
 	\begin{itemize}
 	\footnotesize{
-	\item $\mathcal{Y}_{\pm v, l} = \{ y \in \mathcal{D}_{\vec y_l} \mid \pm y^{T}v \geq 0 \}$. This set corresponds to the positive ($+$) or negative ($-$) halfspace defined by the vector $v$ in the space of the activations of layer $l$. 
+	\item $\mathcal{Y}_{\pm v, \ell} = \{ y \in \mathcal{D}_{\vec y_\ell} \mid \pm y^{T}v \geq 0 \}$. This set corresponds to the positive ($+$) or negative ($-$) halfspace defined by the vector $v$ in the space of the activations of layer $\ell$. 
     }
 	\end{itemize}
 \end{itemize}

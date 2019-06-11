@@ -55,7 +55,7 @@ label=\protect\usebeamerfont{enumerate item}%
 
 \logoleft{\begin{center} \includegraphics[height=4.5cm]{img/SU_Seal_Blk_pos}\end{center}}
 \logoright{\begin{center} \includegraphics[height=4.5cm]{img/icme_logo_trans} \end{center}}
-\footer{CS 236: Deep Generative Models $|$ Fall 2019 \hspace{38cm} \{\texttt{kkessel, clazarus, jvrsgsty}\}\texttt{@stanford.edu} }
+\footer{CS 231N: Convolutional Neural Networks for Visual Recognition $|$ Spring 2019 \hspace{38cm} \{\texttt{kkessel, clazarus, jvrsgsty}\}\texttt{@stanford.edu} }
 %\date{}
 
 \begin{document}
@@ -109,29 +109,42 @@ label=\protect\usebeamerfont{enumerate item}%
 \begin{textblock}{\colwidth}(\firstcolpos,\vstartCols)
 
 \begin{paddedBlock}{Summary}
-Deep Neural Networks are very useful at classifying tasks but their intrinsic complexity makes it really hard to explain the reasoning behind a classification outcome. In recent work [2], statistical methods were introduced to help assess the influence of human intelligible concepts in classification outcomes.
-We aim to asses and extend such methods by leveraging formal methods for Neural Network verification.
+Although deep neural networks have proved to be very successful at classification tasks, their intrinsic complexity makes reasoning about a classification outcome difficult.
+In recent work [2], statistical methods were introduced as a means to assess the influence of human-intelligible concepts in classification outcomes.
+We aim to assess and extend such methods by leveraging formal methods for neural network verification.
 \begin{itemize}
-\item \textbf{Problem:} Why did the network classify image $\mathcal{i}$ with label $k$?
-\item \textbf{Solution:} Come up with classes TCAV etc bla bla? or more like we tried to test the TCAV method??
-\item \textbf{Preliminary Results:} nothing nothing nothing.
+\item \textbf{Question:} How important is a concept in classifying image $i$ as label $k$? e.g. Is the presence of stripes relevant in the classification of an animal as a zebra?
+\item \textbf{Approach \#1:} Use TCAV framework to provide statistical guarantees
+\item \textbf{Approach \#2:} Use neural network verification methods [1] to provide formal guarantees
 \end{itemize}
 \end{paddedBlock}
 
-\begin{paddedBlock}{Talk about TCAV ?}
-\underline{Concept Activation Vectors}:
-
-asdasdasd 
-\underline{Output}:
+\begin{paddedBlock}{Testing with Concept Activation Vectors (TCAV) [2]}
 \begin{itemize}
-	\item predictions for the unlabelled nodes $\hat{y}_L$
+\item \textbf{Idea:} Identify the region in the latent space corresponding to layer $\ell$ of the network in which a human-intelligible concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with the CAV.
+\item \textbf{Inputs:}
+	\begin{itemize}
+	\footnotesize{
+	\item set of examples for a user-defined concept $C$ and set of random counterexamples
+    \item labeled examples for the class $k$ under consideration
+    \item trained classification network
+    }
+	\end{itemize}
+\item \textbf{Outputs:}
+	\begin{itemize}
+	\footnotesize{
+	\item CAV $v_c^\ell$ for concept $C$ at layer $\ell$
+    \item TCAV score $S_{C,k}^\ell(\mathbf{x})$ of the sensitivity of the model's prediction of class $k$ to concept $C$
+    	\[ S_{C,k}^\ell(\mathbf{x}) = \nabla h_k^\ell\left(f_\ell(\mathbf{x})\right) \cdot \mathbf{v}_C^\ell \]
+    \item $p$-value testing the hypothesis that concept $C$ is not relevant in classifying images of class $k$
+    }
+	\end{itemize}
 \end{itemize}
 %\vspace{-5mm}
 \end{paddedBlock}
 
 \begin{paddedBlock}{Neural Network Verification}
-\texttt{GCN} [1] for node classification: $\hat{y} = h(Ah(AXW_1)W_2)$
-
+\[ \vec x\in \mathcal{X} \Rightarrow \vec y=\vec f(\vec x)\in \mathcal{Y} \]
 \end{paddedBlock}
 \end{textblock}
 

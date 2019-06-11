@@ -52,12 +52,13 @@ label=\protect\usebeamerfont{enumerate item}%
 
 \title{A Formal Methods Approach Towards Deep Learning Interpretability}
 
-\author{Kriten Kessel, Christopher Lazarus, Javier Sagastuy}
+\author{Kristen Kessel, Christopher Lazarus, Javier Sagastuy}
 \institute{Stanford University}
 
 \logoleft{\begin{center} \includegraphics[height=4.5cm]{img/SU_Seal_Blk_pos}\end{center}}
 \logoright{\begin{center} \includegraphics[height=4.5cm]{img/icme_logo_trans} \end{center}}
-\footer{CS 231N: Convolutional Neural Networks for Visual Recognition $|$ Spring 2019 \hspace{38cm} \{\texttt{kkessel, clazarus, jvrsgsty}\}\texttt{@stanford.edu} }
+\footer{CS 231N $|$ Spring 2019 \hspace{38cm} \{\texttt{kkessel, clazarus, jvrsgsty}\}\texttt{@stanford.edu}}
+%
 %\date{}
 
 \begin{document}
@@ -127,9 +128,9 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 \item \textbf{Inputs:}
 	\begin{itemize}
 	\footnotesize{
+	\item trained classification network
 	\item set of examples for a user-defined concept $C$ and set of random counterexamples
     \item labeled examples for the class $k$ under consideration
-    \item trained classification network
     }
 	\end{itemize}
 \item \textbf{Outputs:}
@@ -159,28 +160,33 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 \begin{paddedBlock}{Approach: TCAV + Verification}
 %\vspace{8mm}
 
-\alert{Data bla bla}
-  \begin{itemize}
-    \item talk about data
-  \end{itemize}
+\alert{Custom data sets}
+%\begin{figure}%
+%    \centering
+%    \subfloat[label 1]{{\includegraphics[width=5cm]{img/mnist_bw.png} }}%
+%    \qquad
+%    \subfloat[label 2]{{\includegraphics[width=5cm]{img/mnist_color.png} }}%
+%    \caption{2 Figures side by side}%
+%    \label{fig:example}%
+%\end{figure}
 
 \begin{figure}%
     \centering
-    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/mnist_bw.png} }}%
+    \subfloat[Colorized MNIST training set for classification of hand-written digits]{{\includegraphics[width=.4\textwidth]{img/mnist_color.png}}}%
     \qquad
-    \subfloat[label 2]{{\includegraphics[width=.4\textwidth]{img/mnist_color.png} }}%
-    \caption{2 Figures side by side}%
+    \subfloat[Blue concept training set and non-blue training set to learn CAVs for concept blue]{\includegraphics[width=width=.4\textwidth]{img/cav_viz}}}%
+%    \caption{2 Figures side by side}%
     \label{fig:example}%
 \end{figure}
 
-\begin{figure}
-    \centering
-    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-    %\missingfigure{Hallucigraph architecture sketch}
-    \includegraphics[width=.2\textwidth]{img/cav_viz}
-    %\caption{Caption}
-    \label{fig:big}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
+%    %\missingfigure{Hallucigraph architecture sketch}
+%    \includegraphics[width=.2\textwidth]{img/cav_viz}
+%    %\caption{Caption}
+%    \label{fig:big}
+%\end{figure}
 
 %\vspace{8mm}
 

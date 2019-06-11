@@ -49,20 +49,9 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
 \end{paddedBlock}
 
 \begin{paddedBlock}{Talk about TCAV ?}
-\underline{Input}:
-\begin{itemize}
-\item adjacency matrices $A_L$ and $A_U$ for the two sets of nodes;
-\item features vectors $X_L$ and $X_U$;
-\item labels $y_L$
-\end{itemize}
-\begin{figure}
-    \centering
-    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-    %\missingfigure{figure with the two graphs (one labeled and one not) goes here}
-    \includegraphics[width=0.90\textwidth]{img/graph_prob.pdf}
-    %\caption{Caption}
-    \label{fig:coins}
-\end{figure}
+\underline{Concept Activation Vectors}:
+
+asdasdasd
 \underline{Output}:
 \begin{itemize}
 	\item predictions for the unlabelled nodes $\hat{y}_L$
@@ -72,14 +61,7 @@ We aim to asses and extend such methods by leveraging formal methods for Neural 
 
 \begin{paddedBlock}{Neural Network Verification}
 \texttt{GCN} [1] for node classification: $\hat{y} = h(Ah(AXW_1)W_2)$
-\begin{figure}
-    \centering
-    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-    %\missingfigure{architecture of the baseline model}
-    \includegraphics[width=.8\textwidth]{img/model_small.pdf}
-    %\caption{Caption}
-    \label{fig:small}
-\end{figure}
+
 \end{paddedBlock}
 \end{textblock}
 

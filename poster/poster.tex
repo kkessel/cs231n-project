@@ -124,7 +124,9 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 
 \begin{paddedBlock}{Testing with Concept Activation Vectors (TCAV) [2]}
 \begin{itemize}
-\item \textbf{Idea:} Identify the region in the latent space corresponding to layer $\ell$ of the network in which a concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with the CAV.
+\item \textbf{Idea:} \footnotesize{Identify the region in the latent space corresponding to layer $\ell$ of the network in which a concept (e.g. blue) manifests more intensely with a vector called the Concept Activation Vector (CAV). Measure the relevance of this concept for classification of image $i$ as class $k$ by taking directional derivative of the layer $\ell$ activations for image $i$ with respect to the CAV.}
+\end{itemize}
+\begin{itemize}
 \item \textbf{Inputs:}
 	\begin{itemize}
 	\footnotesize{
@@ -137,8 +139,10 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 	\begin{itemize}
 	\footnotesize{
 	\item CAV $v_c^\ell$ for concept $C$ at layer $\ell$
-    \item TCAV score $S_{C,k}^\ell(\mathbf{x})$ of the sensitivity of the model's prediction of class $k$ to concept $C$
+    \item score $S_{C,k}^\ell(\mathbf{x})$ of the sensitivity of the model's prediction of class $k$ to concept $C$
     	\[ S_{C,k}^\ell(\mathbf{x}) = \nabla h_k^\ell\left(f_\ell(\mathbf{x})\right) \cdot \mathbf{v}_C^\ell \]
+    \item TCAV score aggregating scores for each training image $\mathbf{x}$ in class $X_k$
+    	\[ \text{TCAV}_{C, k}^\ell = \frac{\left| \mathbf{x} \in X_k : S_{C,k}^\ell(\mathbf{x}) > 0 \right|}{\left| X_k \right|} \]
     \item $p$-value testing the hypothesis that concept $C$ is not relevant in classifying images of class $k$
     }
 	\end{itemize}
@@ -270,25 +274,25 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 \scalebox{0.7}{
 \begin{tabular}{lcccc}
 \hline
-\textbf{\#} & \textbf{network} &  \textbf{in/out sets} &   \textbf{algorithm}  &  \textbf{result} \\ \hline 
+\textbf{Property \#} & \textbf{network} &  \textbf{in/out sets} &   \textbf{algorithm}  &  \textbf{result} \\ \hline 
 \multirow{2}{*}{1} & \texttt{blue2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  violated \\
-                   & \texttt{bal2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  violated \\
+                   & \texttt{balanced\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  violated \\
 \hline
 \multirow{2}{*}{1.1} & \texttt{blue2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc4}}$ &  NSVerify &  violated \\
-                   & \texttt{bal2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc4}}$ &  NSVerify &  violated \\
+                   & \texttt{balanced\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc4}}$ &  NSVerify &  violated \\
 \hline
 
 \multirow{2}{*}{2} & \texttt{blue2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  Reluplex &  violated \\
-                   & \texttt{bal2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  Reluplex &  violated \\
+                   & \texttt{balanced\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  Reluplex &  violated \\
 \hline
 \multirow{2}{*}{2.1} & \texttt{blue2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc2}}$ &  Reluplex &  violated \\
-                   & \texttt{bal2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc2}}$ &  Reluplex &  violated \\
+                   & \texttt{balanced\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc2}}$ &  Reluplex &  violated \\
 \hline
 \multirow{2}{*}{3} & \texttt{blue2\_5x50} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  unknown \\
-                   & \texttt{bal2\_5x50} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  unknown \\
+                   & \texttt{balanced\_5x50} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  unknown \\
 \hline
 \multirow{2}{*}{3.1} & \texttt{blue2\_3x20} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  NSVerify &  holds \\
-                   & \texttt{bal2\_3x20} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  NSVerify &  violated \\
+                   & \texttt{balanced\_3x20} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  NSVerify &  violated \\
 \hline
 \end{tabular}
 }
@@ -299,7 +303,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 \alert{Analysis}
 
 \begin{itemize}
-  \item Property 3.1 indicates that the concept blue has a very significant impact in the classification output of a $2$.
+  \item Property 3.1 indicates that the concept blue has a significant impact in the classification output of a $2$.
   \item If the methodology is correct, it would appear that blue is relevant for both networks trained on color-balanced and color-biased data sets. Perhaps the tests in TCAV are not sufficient to identify spurious CAVs.
 \end{itemize}
 
@@ -311,9 +315,9 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 
 \footnotesize{[2] B. Kim, M. Wattenberg, J. Gilmer, C. J. Cai, J. Wexler, F. B. Viegas, and R. Sayres. Interpretability beyond feature attribution: Quantitative testing with concept activation vectors (tcav). In ICML, 2018}
 
-\footnotesize{[3] Y. LeCun, C. Cortes, and C. Burges. Mnist handwritten digit database. AT&T Labs [Online]. Available: http://yann. lecun. com/exdb/mnist, 2:18, 2010}
+%\footnotesize{[3] Y. LeCun, C. Cortes, and C. Burges. Mnist handwritten digit database. AT&T Labs [Online]. Available: http://yann. lecun. com/exdb/mnist, 2:18, 2010}
 
-\footnotesize{[4] C. Liu, T. Arnon, C. Lazarus, C. Barrett, and M. J. Kochenderfer. Algorithms for verifying deep neural networks. CoRR, abs/1903.06758, 2019}
+\footnotesize{[3] C. Liu, T. Arnon, C. Lazarus, C. Barrett, and M. J. Kochenderfer. Algorithms for verifying deep neural networks. CoRR, abs/1903.06758, 2019}
 
 \end{paddedBlock}
 \end{textblock}

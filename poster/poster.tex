@@ -221,7 +221,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
     \qquad
     \subfloat{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
     \qquad
-    \caption{\textcolor{cardinal}{(a)} TCAV scores for testing the concept blue for class 2 \textcolor{cardinal}{(b)} Percentage of variation explained by the singular vectors of the CAVs for the concept blue, for the models trained on the color-balanced and blue-biased data sets}%
+    \caption{\textcolor{cardinal}{(a)} TCAV scores and $p$-values for testing the concept blue for class 2. A significant test indicates that there is sufficient evidence to suggest that the concept blue is relevant in the classification of the class 2. \textcolor{cardinal}{(b)} Percentage of variation explained by the principal components of the CAVs for the concept blue, for the models trained on the color-balanced and blue-biased data sets.}%
     \label{fig:example}%
 \end{figure}
 
@@ -245,23 +245,25 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 %\vspace{8mm}
 \alert{Properties}
 
-
 \begin{itemize}
-\item \textbf{Input Sets:}
+\item \textbf{Input sets:}
 	\begin{itemize}
 	\footnotesize{
-	\item $\mathcal{X}_1 = \{ x \in \mathcal{D}_{\vec x} \mid 0 \leq r(x) \leq 25,  0 \leq g(x) \leq 25, 150 \leq b(x) \leq 255 \}$, where $r(x)$, $g(x)$, and $b(x)$ correspond to the red, green, and blue channels, respectively. 
+	\item $\mathcal{X}_1 = \{ x \in \mathcal{D}_{\vec x} \mid 0 \leq r(x) \leq 25,  0 \leq g(x) \leq 25, 150 \leq b(x) \leq 255 \}$, where $r(x)$, $g(x)$, and $b(x)$ correspond to the red, green, and blue channels of image $x$, respectively. 
 	\item $\mathcal{X}_{2,r} = \{x \in \mathcal{D}_{\vec x} \mid \left  \| x - x_0 \right \|_{\infty} \leq r \}$, where $x_0$ is an arbitrary training image of a blue $2$. This set corresponds to a hypercube centered on a blue 2 with radius $r$.
     }
 	\end{itemize}
-\item \textbf{Output Sets:}
+\item \textbf{Output sets:}
 	\begin{itemize}
 	\footnotesize{
-	\item $\mathcal{Y}_{\pm v, l} = \{ y \in \mathcal{D}_{\vec y_l} \mid \pm y^{T}v \geq 0 \}$. This corresponds to the positive ($+$) or negative ($-$) halfspace defined by the vector $v$ in the space of the activations of layer $l$. 
+	\item $\mathcal{Y}_{\pm v, l} = \{ y \in \mathcal{D}_{\vec y_l} \mid \pm y^{T}v \geq 0 \}$. This set corresponds to the positive ($+$) or negative ($-$) halfspace defined by the vector $v$ in the space of the activations of layer $l$. 
     }
 	\end{itemize}
 \end{itemize}
 
+\vspace{8mm}
+
+\alert{Results}
  
 \begin{table}
 \centering
@@ -298,7 +300,7 @@ For input set $\mathcal{X}$, neural network $f$, and output set $\mathcal{Y}$, w
 
 \begin{itemize}
   \item Property 3.1 indicates that the concept blue has a very significant impact in the classification output of a $2$.
-  \item If the methodology is correct, it would appear that blue is relevant both for balanced and unbalanced networks. Perhaps the tests in TCAV are not sufficient to identify spurious CAVs.
+  \item If the methodology is correct, it would appear that blue is relevant for both networks trained on color-balanced and color-biased data sets. Perhaps the tests in TCAV are not sufficient to identify spurious CAVs.
 \end{itemize}
 
 \end{paddedBlock}

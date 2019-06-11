@@ -14,6 +14,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{multirow}
+
 
 \usepackage[orientation=landscape,size=a1,scale=1.6]{beamerposter}
 
@@ -164,9 +166,9 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 
 \begin{figure}%
     \centering
-    \subfloat[label 1]{{\includegraphics[width=5cm]{img/mnist_bw.png} }}%
+    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/mnist_bw.png} }}%
     \qquad
-    \subfloat[label 2]{{\includegraphics[width=5cm]{img/mnist_color.png} }}%
+    \subfloat[label 2]{{\includegraphics[width=.4\textwidth]{img/mnist_color.png} }}%
     \caption{2 Figures side by side}%
     \label{fig:example}%
 \end{figure}
@@ -233,35 +235,48 @@ LALALALALAL
 \alert{Need to talk about significant CAVs}
 Then talk about the avenues and boulevards.
 
-\begin{figure}
+\begin{figure}%
     \centering
-    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
-    %\missingfigure{Hallucigraph architecture sketch}
-    \includegraphics[width=.8\textwidth]{img/scree_plot}
-    %\caption{Caption}
-    \label{fig:big}
+    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
+    \qquad
+    \subfloat[label 2]{{\includegraphics[width=.4\textwidth]{img/table1} }}%
+    \caption{2 Figures side by side}%
+    \label{fig:example}%
 \end{figure}
 
 %\vspace{8mm}
 \alert{Node classification results}
-
+\\ 
 \begin{table}
 \centering
+\scalebox{0.7}{
 \begin{tabular}{lcccc}
 \hline
-
-\textbf{model} &  \textbf{balanced} &   \textbf{blue 2} &    \textbf{red 2} &  \textbf{green 2} \\ \hline 
-\texttt{balanced\_5x50} &    $0.942$ &  $0.942$ &  $0.941$ &  $0.944$ \\
-\texttt{blue2\_5x50} &    $0.780$ &  $0.952$ &  $0.682$ &  $0.689$ \\
-\texttt{balanced\_3x50} &    $0.942$ &  $0.940$ &  $0.942$ &  $0.941$ \\
-\texttt{blue2\_3x50} &    $0.724$ &  $0.954$ &  $0.675$ &  $0.684$ \\
-\texttt{balanced\_3x20} &    $0.890$ &  $0.890$ &  $0.891$ &  $0.888$ \\
-\texttt{blue2\_3x20} &    $0.708$ &  $0.923$ &  $0.663$ &  $0.672$ \\
+\textbf{\#} & \textbf{network} &  \textbf{in/out sets} &   \textbf{algorithm}  &  \textbf{result} \\ \hline 
+\multirow{2}{*}{1} & \texttt{blue2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  violated \\
+                   & \texttt{bal2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  violated \\
+\hline
+\multirow{2}{*}{1.1} & \texttt{blue2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc4}}$ &  NSVerify &  violated \\
+                   & \texttt{bal2\_5x50} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc4}}$ &  NSVerify &  violated \\
 \hline
 
+\multirow{2}{*}{2} & \texttt{blue2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  Reluplex &  violated \\
+                   & \texttt{bal2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  Reluplex &  violated \\
+\hline
+\multirow{2}{*}{2.1} & \texttt{blue2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc2}}$ &  Reluplex &  violated \\
+                   & \texttt{bal2\_3x20} & $\mathcal{X}_1$/$\mathcal{Y}_{+ \text{mean}, \text{fc2}}$ &  Reluplex &  violated \\
+\hline
+\multirow{2}{*}{3} & \texttt{blue2\_5x50} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  unknown \\
+                   & \texttt{bal2\_5x50} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc4}}$ &  NSVerify &  unknown \\
+\hline
+\multirow{2}{*}{3.1} & \texttt{blue2\_3x20} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  NSVerify &  holds \\
+                   & \texttt{bal2\_3x20} & $\mathcal{X}_{2,5}$/$\mathcal{Y}_{+ \text{PC1}, \text{fc2}}$ &  NSVerify &  violated \\
+\hline
 \end{tabular}
+}
+\caption{Results of formal verification experiments for various networks, input and output sets, and algorithms. If the result is violated, this indicates that $\vec x \in \mathcal{X} \nRightarrow \vec y = \vec f(\vec x) \in \mathcal{Y}$.}
+\label{table:properties}
 \end{table}
-
 
 
 \begin{itemize}

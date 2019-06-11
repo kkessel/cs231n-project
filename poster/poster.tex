@@ -237,8 +237,26 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 %\vspace{8mm}
 
 %\vspace{8mm}
-\alert{Node classification results}
-\\ 
+\alert{Properties}
+
+
+\begin{itemize}
+\item \textbf{Input Sets:}
+	\begin{itemize}
+	\footnotesize{
+	\item $\mathcal{X}_1 = \{ x \in \mathcal{D}_{\vec x} \mid 0 \leq r(x) \leq 25,  0 \leq g(x) \leq 25, 150 \leq b(x) \leq 255 \}$, where $r(x)$, $g(x)$, and $b(x)$ correspond to the red, green, and blue channels, respectively. 
+	\item $\mathcal{X}_{2,r} = \{x \in \mathcal{D}_{\vec x} \mid \left  \| x - x_0 \right \|_{\infty} \leq r \}$, where $x_0$ is an arbitrary training image of a blue $2$. This set corresponds to a hypercube centered on a blue 2 with radius $r$.
+    }
+	\end{itemize}
+\item \textbf{Output Sets:}
+	\begin{itemize}
+	\footnotesize{
+	\item $\mathcal{Y}_{\pm v, l} = \{ y \in \mathcal{D}_{\vec y_l} \mid \pm y^{T}v \geq 0 \}$. This corresponds to the positive ($+$) or negative ($-$) halfspace defined by the vector $v$ in the space of the activations of layer $l$. 
+    }
+	\end{itemize}
+\end{itemize}
+
+ 
 \begin{table}
 \centering
 \scalebox{0.7}{
@@ -270,10 +288,11 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 \label{table:properties}
 \end{table}
 
+\alert{Analysis}
 
 \begin{itemize}
-  \item Try to salvage somethibg
-  \item Nothing worked : )
+  \item Property 3.1 indicates that the concept blue has a very significant impact in the classification output of a $2$.
+  \item If the methodology is correct, it would appear that blue is relevant both for balanced and unbalanced networks. Perhaps the tests in TCAV are not sufficient to identify spurious CAVs.
 \end{itemize}
 
 \end{paddedBlock}

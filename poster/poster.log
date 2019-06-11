@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 JUN 2019 15:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  10 JUN 2019 18:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1138,28 +1138,40 @@ File: img/cav_viz.pdf Graphic file (type pdf)
 <use img/cav_viz.pdf>
 Package pdftex.def Info: img/cav_viz.pdf  used on input line 113.
 (pdftex.def)             Requested size: 143.25691pt x 139.2768pt.
-<img/data_distr_balanced_test_new.pdf, id=23, 550.77252pt x 349.45403pt>
-File: img/data_distr_balanced_test_new.pdf Graphic file (type pdf)
-<use img/data_distr_balanced_test_new.pdf>
-Package pdftex.def Info: img/data_distr_balanced_test_new.pdf  used on input line 125.
-(pdftex.def)             Requested size: 142.26378pt x 90.26402pt.
-<img/data_distr_blue2_test_new.pdf, id=24, 549.17084pt x 343.96136pt>
-File: img/data_distr_blue2_test_new.pdf Graphic file (type pdf)
-<use img/data_distr_blue2_test_new.pdf>
-Package pdftex.def Info: img/data_distr_blue2_test_new.pdf  used on input line 127.
-(pdftex.def)             Requested size: 142.26378pt x 89.10243pt.
-<img/scree_plot.pdf, id=25, 433.62pt x 289.08pt>
-File: img/scree_plot.pdf Graphic file (type pdf)
-<use img/scree_plot.pdf>
-Package pdftex.def Info: img/scree_plot.pdf  used on input line 142.
-(pdftex.def)             Requested size: 573.03857pt x 382.07198pt.
 
-Overfull \hbox (8.90242pt too wide) in paragraph at lines 92--158
+./poster.vrb:125: Package xkeyval Error: `backgroundcolor' undefined in families `Gin'.
+
+See the xkeyval package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.125 ...te]{img/data_distr_balanced_test_new2} }}
+                                                  %
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<img/data_distr_balanced_test_new2.png, id=23, 550.4565pt x 349.305pt>
+File: img/data_distr_balanced_test_new2.png Graphic file (type png)
+<use img/data_distr_balanced_test_new2.png>
+Package pdftex.def Info: img/data_distr_balanced_test_new2.png  used on input line 125.
+(pdftex.def)             Requested size: 286.51382pt x 181.81552pt.
+<img/data_distr_blue2_test_new2.png, id=24, 548.7702pt x 343.7643pt>
+File: img/data_distr_blue2_test_new2.png Graphic file (type png)
+<use img/data_distr_blue2_test_new2.png>
+Package pdftex.def Info: img/data_distr_blue2_test_new2.png  used on input line 127.
+(pdftex.def)             Requested size: 286.51382pt x 179.48232pt.
+
+Overfull \hbox (8.90242pt too wide) in paragraph at lines 92--151
  []$[]$  
  []
 
+<img/scree_plot.pdf, id=25, 433.62pt x 289.08pt>
+File: img/scree_plot.pdf Graphic file (type pdf)
+<use img/scree_plot.pdf>
+Package pdftex.def Info: img/scree_plot.pdf  used on input line 175.
+(pdftex.def)             Requested size: 573.03857pt x 382.07198pt.
 
-Overfull \hbox (8.90242pt too wide) in paragraph at lines 172--207
+Overfull \hbox (8.90242pt too wide) in paragraph at lines 165--207
  []$[]$  
  []
 
@@ -1213,7 +1225,7 @@ l.307 \end{frame}
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
 l.307 \end{frame}
-                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icme_logo_trans.png> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/mnist_bw.png> <./img/mnist_color.png> <./img/cav_viz.pdf> <./img/data_distr_balanced_test_new.pdf> <./img/data_distr_blue2_test_new.pdf> <./img/scree_plot.pdf>]
+                  <./img/SU_Seal_Blk_pos-eps-converted-to.pdf> <./img/icme_logo_trans.png> <./img/graph_prob.pdf> <./img/model_small.pdf> <./img/mnist_bw.png> <./img/mnist_color.png> <./img/cav_viz.pdf> <./img/data_distr_balanced_test_new2.png> <./img/data_distr_blue2_test_new2.png> <./img/scree_plot.pdf>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1247,17 +1259,17 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  23848 strings out of 492649
- 458895 string characters out of 6129622
+ 458857 string characters out of 6129622
  603943 words of memory out of 5000000
  27113 multiletter control sequences out of 15000+600000
  53718 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,19n,95p,803b,1049s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on poster.pdf (1 page, 788229 bytes).
+Output written on poster.pdf (1 page, 956331 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 118 compressed objects within 2 object streams
+ 218 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
  7 named destinations out of 1000 (max. 500000)
  99 words of extra memory for PDF output out of 10000 (max. 10000000)
 

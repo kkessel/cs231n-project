@@ -157,7 +157,7 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textblock}{\colwidth}(\secondcolpos,\vstartCols)
-\begin{paddedBlock}{Approach: TCAV + Verification}
+\begin{paddedBlock}{Approach \#1: TCAV}
 %\vspace{8mm}
 
 \alert{Custom Data Sets}
@@ -181,6 +181,11 @@ We aim to assess and extend such methods by leveraging formal methods for neural
     \label{fig:example}%
 \end{figure}
 
+\begin{itemize}
+\item \textbf{Color-balanced data set:} distribution of colors on digits is uniform
+\item \textbf{Color-biased data set:} images belonging to class 2 are arbitrarily biased to be one color (e.g. blue); this color is not used to color images belonging to any other class
+\end{itemize}
+
 %\begin{figure}
 %    \centering
 %    %\missingfigure[width=0.5\textwidth]{2 graphs fig}
@@ -192,36 +197,27 @@ We aim to assess and extend such methods by leveraging formal methods for neural
 
 %\vspace{8mm}
 
-\alert{Maybe talk about classe sand support vector}
-LALALALALAL
-
+\alert{Sanity Check: Test Accuracies of Balanced and Biased Models}
 \begin{figure}%
     \centering
-    \subfloat[label 1]{{\includegraphics[width=.4\textwidth, backgroundcolor=white]{img/data_distr_balanced_test_new2} }}%
+    \subfloat[Accuracy of model trained on color-balanced data set and tested on color-biased data sets (rows)]{{\includegraphics[width=.4\textwidth, backgroundcolor=white]{img/data_distr_balanced_test_new2} }}%
     \qquad
-    \subfloat[label 2]{{\includegraphics[width=.4\textwidth]{img/data_distr_blue2_test_new2} }}%
-    \caption{2 Figures side by side}%
+    \subfloat[Accuracy of model trained and tested on color-biased data-set]{{\includegraphics[width=.4\textwidth]{img/data_distr_blue2_test_new2} }}%
+%    \caption{2 Figures side by side}%
     \label{fig:example}%
 \end{figure}
 
+\alert{Results}
 
-\begin{align*}
-\mathcal{L}_{LP}=&-\mathbb{E}_{Z\sim q(Z|A,X)}[A_{ij}\mathrm{log}\tilde{A}_{ij}+(1-A_{ij})\mathrm{log}(1-\tilde{A}_{i,j})]\\
-&+\mathrm{KL}(q(Z|A,X)||p(Z)).
-\end{align*}
-%\vspace{-8mm}
-
-%\vspace{8mm}
-\alert{2. Edge hallucination}
-  produces $\hat{A}$:
-  \begin{itemize}
-    \item top$K$ ($K$ hyper-parameter)
-    \item sampling using gumbel softmax [4] trick (allows gradients to flow)
-  \end{itemize}
-\alert{3. Node classification}
-\begin{itemize}
-	\item $\hat{y} = \mathrm{GCN}(\hat{A}, X)$
-\end{itemize}
+\begin{figure}%
+    \centering
+    \subfloat[TCAV scores for testing the concept blue for class 2]{{\includegraphics[width=.4\textwidth]{img/table1} }}%
+    \qquad
+    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
+    \qquad
+%    \caption{2 Figures side by side}%
+    \label{fig:example}%
+\end{figure}
 
 \end{paddedBlock}
 %\vspace{3mm}
@@ -237,20 +233,8 @@ LALALALALAL
 
 %\end{paddedBlock}
 
-\begin{paddedBlock}{Results}
+\begin{paddedBlock}{Approach \#2: Formal Methods}
 %\vspace{8mm}
-
-\alert{Need to talk about significant CAVs}
-Then talk about the avenues and boulevards.
-
-\begin{figure}%
-    \centering
-    \subfloat[label 1]{{\includegraphics[width=.4\textwidth]{img/scree_plot} }}%
-    \qquad
-    \subfloat[label 2]{{\includegraphics[width=.4\textwidth]{img/table1} }}%
-    \caption{2 Figures side by side}%
-    \label{fig:example}%
-\end{figure}
 
 %\vspace{8mm}
 \alert{Node classification results}
